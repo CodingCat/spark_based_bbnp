@@ -1,0 +1,739 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"input",
+				"inputPath"
+			],
+			[
+				"ner",
+				"neuronId"
+			],
+			[
+				"ne",
+				"nextLayer"
+			],
+			[
+				"next",
+				"nextLayer"
+			],
+			[
+				"hidden",
+				"hiddenUnits"
+			],
+			[
+				"nex",
+				"nextL"
+			],
+			[
+				"se",
+				"strSeq"
+			],
+			[
+				"str",
+				"strSeq"
+			],
+			[
+				"ARR",
+				"ArraySeq"
+			],
+			[
+				"Arra",
+				"ArraySeq"
+			],
+			[
+				"co",
+				"collection"
+			],
+			[
+				"proper",
+				"propertyMap"
+			],
+			[
+				"global",
+				"globalConf"
+			],
+			[
+				"init",
+				"initializeUnits"
+			],
+			[
+				"output",
+				"outputWeights"
+			],
+			[
+				"OUTPUT",
+				"outputTargets"
+			],
+			[
+				"neu",
+				"neuronId"
+			],
+			[
+				"out",
+				"outputTargets"
+			],
+			[
+				"Input",
+				"InputLayer"
+			],
+			[
+				"outputTar",
+				"outputTargets"
+			],
+			[
+				"String",
+				"StringBuilder"
+			],
+			[
+				"propr",
+				"propertyName"
+			],
+			[
+				"property",
+				"propertyName"
+			],
+			[
+				"PROPER",
+				"propertyName"
+			],
+			[
+				"proer",
+				"propertyMap"
+			],
+			[
+				"pro",
+				"propertyName"
+			],
+			[
+				"num",
+				"numNeurons"
+			],
+			[
+				"conf",
+				"confPath	"
+			],
+			[
+				"L",
+				"loadFile	(String)"
+			],
+			[
+				"numN",
+				"numNeu"
+			],
+			[
+				"comm",
+				"common_content_loader"
+			],
+			[
+				"research",
+				"research_green_load"
+			],
+			[
+				"h",
+				"h4	Tag"
+			],
+			[
+				"u",
+				"ul	Tag"
+			],
+			[
+				"mtime_",
+				"mtime_g"
+			],
+			[
+				"mtime",
+				"mtime_g"
+			],
+			[
+				"studen",
+				"students_scores"
+			],
+			[
+				"stude",
+				"students_scores"
+			],
+			[
+				"file",
+				"file_obj"
+			],
+			[
+				"par",
+				"parse_result_file"
+			],
+			[
+				"dire",
+				"directory_name"
+			],
+			[
+				"dir",
+				"directory_name"
+			],
+			[
+				"final",
+				"final_score"
+			],
+			[
+				"gra",
+				"grade_standard"
+			],
+			[
+				"case",
+				"case_result"
+			],
+			[
+				"cas",
+				"case_result"
+			],
+			[
+				"ca",
+				"case_result"
+			],
+			[
+				"result",
+				"result_file"
+			],
+			[
+				"Chor",
+				"ChordNodeRpcCalleesHandler"
+			],
+			[
+				"Cho",
+				"ChordNodeRpcCalleesHandler"
+			],
+			[
+				"idlen",
+				"idlength"
+			],
+			[
+				"table",
+				"tablelength"
+			],
+			[
+				"in",
+				"int32_t"
+			],
+			[
+				"Chord",
+				"ChordNodeRpcCalleesHandler"
+			],
+			[
+				"dataqu",
+				"dataquerylayer"
+			],
+			[
+				"confi",
+				"configPath"
+			],
+			[
+				"cont",
+				"confPath"
+			],
+			[
+				"pri",
+				"private"
+			],
+			[
+				"inc",
+				"include"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/main/scala/neurons/inputNeurons.scala",
+			"settings":
+			{
+				"buffer_size": 2538,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/main.scala",
+			"settings":
+			{
+				"buffer_size": 348,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/neurons/hiddenNeurons.scala",
+			"settings":
+			{
+				"buffer_size": 475,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/neurons/NeuronUnit.scala",
+			"settings":
+			{
+				"buffer_size": 444,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "global-conf.xml",
+			"settings":
+			{
+				"buffer_size": 394,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/utils/xmlparser.scala",
+			"settings":
+			{
+				"buffer_size": 1371,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/SBT.sublime-build",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"e",
+				"Ensime: Startup"
+			],
+			[
+				"em",
+				"Ensime: Startup"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"En",
+				"Ensime: Startup"
+			],
+			[
+				"Ensime:",
+				"Ensime: Startup"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/global-conf.xml",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/main/scala/utils/xmlparser.scala",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/build.sbt",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/main/scala/neurons/NeuronUnit.scala",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/main/scala/utils/GlobalConf.scala",
+		"/Users/zhunan/Documents/Course@McGill/Machine Learning/Assignments/4/assignment_4.tex",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/main/scala/neurons/biasNeurons.scala",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/main/scala/neurons/hiddenNeurons.scala",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/main/scala/main.scala",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/input-conf.xml",
+		"/Users/zhunan/Library/Application Support/Sublime Text 2/Packages/Alignment/Default (OSX).sublime-keymap",
+		"/Users/zhunan/Library/Application Support/Sublime Text 2/Packages/Alignment/Base File.sublime-settings",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/main/scala/neurons/inputNeurons.scala",
+		"/Users/zhunan/Library/Application Support/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/zhunan/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/neuron-conf.xml",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/neurons/scala/outputNeuron.scala",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/neurons/scala/inputNeurons.scala",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/main/scala/neurons/outputNeuron.scala",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/neurons/scala/hiddenNeurons.scala",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/neurons/scala/biasNeurons.scala",
+		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/inputLayer/scala/biasInputNode.scala",
+		"/Users/zhunan/codes/TA@McGill/COMP310/assignment3/release/testa2.c",
+		"/Users/zhunan/Dropbox/1. declare a new function in a2:ext.h, void sfs_re",
+		"/Users/zhunan/codes/TA@McGill/COMP310/assignment3/release/datanode/ext.c",
+		"/Users/zhunan/Library/Application Support/Sublime Text 2/Packages/Ensime/Ensime.sublime-settings",
+		"/Users/zhunan/Documents/workspace/SimpleJob/simple.sbt",
+		"/Users/zhunan/Documents/workspace/SimpleJob/src/sparklearning/SimpleJob.scala",
+		"/Users/zhunan/codes/TA@McGill/COMP310/assignment3/release/include/common/dfs_common.h",
+		"/Users/zhunan/codes/LongTermFairScheduler/src/webapps/job/jobdetails.jsp",
+		"/Users/zhunan/codes/LongTermFairScheduler/src/benchmarks/gridmix2/generateGridmix2data.sh",
+		"/Users/zhunan/codes/LongTermFairScheduler/src/benchmarks/gridmix2/rungridmix_2",
+		"/Users/zhunan/codes/LoadWeaver/generateInputData.sh",
+		"/Users/zhunan/Documents/Course@McGill/Machine Learning/Assignments/3/assignment_3.tex",
+		"/Users/zhunan/Sites/bootstrap/content_js/news_loader.js",
+		"/Users/zhunan/Sites/bootstrap/index.html",
+		"/Users/zhunan/Sites/bootstrap/content_base/cur_service",
+		"/Users/zhunan/Sites/bootstrap/honors.html",
+		"/Users/zhunan/Sites/bootstrap/content_js/honors_loader.js",
+		"/Users/zhunan/Sites/bootstrap/content_base/honors",
+		"/Users/zhunan/Sites/bootstrap/content_base/research_cyber",
+		"/Users/zhunan/Sites/bootstrap/content_js/common_content_loader.js",
+		"/Users/zhunan/Sites/bootstrap/content_base/students",
+		"/Users/zhunan/Sites/bootstrap/content_js/research_loader.js",
+		"/Users/zhunan/Sites/bootstrap/content_js/students_loader copy.js",
+		"/Users/zhunan/Sites/bootstrap/content_base/research_green.log",
+		"/Users/zhunan/Sites/bootstrap/content_base/research_green",
+		"/Users/zhunan/Sites/bootstrap/content_js/bio_loader copy.js",
+		"/Users/zhunan/Sites/bootstrap/content_js/teaching_loader.js",
+		"/Users/zhunan/Sites/bootstrap/content_base/bio",
+		"/Users/zhunan/Sites/bootstrap/assets/js/bootstrap-modal.js",
+		"/Users/zhunan/Sites/bootstrap/content_js/Research/Green",
+		"/Users/zhunan/Sites/bootstrap/content_base/teaching",
+		"/Users/zhunan/Sites/bootstrap/content_base/news",
+		"/Users/zhunan/Sites/bootstrap/assets/css/bootstrap-responsive.css",
+		"/Users/zhunan/Sites/bootstrap/assets/css/bootstrap.css",
+		"/Users/zhunan/Documents/Course@McGill/Machine Learning/Assignments/2/assignment2_4_b.m",
+		"/Users/zhunan/Documents/Course@McGill/Advanced Topics in System/provide 100 apples weekly, two students share them",
+		"/Users/zhunan/Library/Application Support/Sublime Text 2/Packages/User/latex.sublime-build",
+		"/Users/zhunan/Documents/paper_review/167.txt",
+		"/Users/zhunan/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/zhunan/Library/Application Support/Sublime Text 2/Packages/CTags/CTags.sublime-settings",
+		"/Users/zhunan/codes/TA@McGill/COMP310/assignment2_to_deliver/PA2.tex",
+		"/Users/zhunan/codes/TA@McGill/COMP310/assignment1_to_deliver/grading/10011/001",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ThriftCallees/ChordNodeRpcCallees_server.cpp",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ThriftCallees/ChordNodeRpcCallees_server.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ChordNode.cc",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Base/HashTableEntry.cc",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Base/Makefile",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ThriftCallees/NodeInfo_types.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/Makefile",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ThriftCallees/Makefile",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Makefile~",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/Makefile",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/Makefile.common",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ChordFingerTable.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ThriftCallees/ChordNodeRpcCallees.cpp",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Base/DataQueryNode.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ThriftCallees/NodeInfo_constants.cpp",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataLocation/RPC_Methods_Base.cc",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ThriftCallees/NodeInfo.thrift",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ThriftCallees/NodeInfo_constants.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Base/RouteTable.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ChordFingerTable.cc",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ChordNode.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/DataQueryServer.cc",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ThriftCallees/NodeInfo_types.cpp",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/Utils/Configuration.cc",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Base/NodeInfo.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ThriftCallees/ChordNodeRpcCallees.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ThriftCallees/ChordNodeRpcCallees_server.skeleton.cpp",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/Utils/Configuration.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Makefile",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/Utils/Makefile",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Base/HashTableEntry.h",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ThriftCallees/ChordNodeRpcCallees_server.skeleton.cpp",
+		"/Users/zhunan/codes/CosmosSIM/script/artificial_c4.ini",
+		"/users/zhunan/codes/CosmosSIM/script/artificial_trace.txt",
+		"/usr/local/include/zmq.h",
+		"/Users/zhunan/codes/learn/zeromq/hello_world/server.c",
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataLocation/DataLocation.cc",
+		"/users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ChordNode.h",
+		"/users/zhunan/ScalableMapReduce/scalableMR/src/MapReduce/JobManager.cc",
+		"/users/zhunan/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"mapGroup",
+			"<big>",
+			"<br>",
+			"</big>",
+			"color:",
+			"navbar",
+			"nav-coll",
+			"navbar",
+			"headers",
+			"hostNode",
+			"DataLocation",
+			"\n			",
+			"UTILS_CONGIFURATION_H",
+			"UTILS_XMLPARSER_H",
+			"XmlParser",
+			"Configuration",
+			"XmlParser"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/main/scala/neurons/inputNeurons.scala",
+					"settings":
+					{
+						"buffer_size": 2538,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								941,
+								941
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 589.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/main/scala/main.scala",
+					"settings":
+					{
+						"buffer_size": 348,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								347,
+								347
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/main/scala/neurons/hiddenNeurons.scala",
+					"settings":
+					{
+						"buffer_size": 475,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								437,
+								437
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/main/scala/neurons/NeuronUnit.scala",
+					"settings":
+					{
+						"buffer_size": 444,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								154,
+								162
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "global-conf.xml",
+					"settings":
+					{
+						"buffer_size": 394,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/main/scala/utils/xmlparser.scala",
+					"settings":
+					{
+						"buffer_size": 1371,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 157.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/users/zhunan/ScalableMapReduce/scalableMR/src/MapReduce/JobManager.cc"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 276.0,
+	"status_bar_visible": true
+}

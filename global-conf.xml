@@ -1,0 +1,18 @@
+<configuration>
+	<property>
+		<name>global.Env.runningMode</name>
+		<value>local</value>
+	</property>
+	<property>
+		<name>global.Env.MasterURI</name>
+		<value>local</value>
+	</property>
+	<property>
+		<name>global.Env.JarURI</name>
+		<value>local</value>
+	</property>
+	<property>
+		<name>global.Env.SparkPath</name>
+		<value>/Users/zhunan/codes/spark-0.6.0/</value>
+	</property>
+</configuration>
