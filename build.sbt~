@@ -2,8 +2,6 @@ name := "spark-bpnn"
 
 version := "1.0"
 
-scalacOptions ++= Seq("-unchecked", "-deprecation")
-
 scalaVersion := "2.9.2"
 
 libraryDependencies += "org.spark-project" %% "spark-core" % "0.6.0"

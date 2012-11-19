@@ -1,13 +1,24 @@
 package bpnn
 
+import spark.SparkEnv
+import spark.SparkContext
+import SparkContext._
+
 import bpnn.neurons._
+import bpnn.utils._
 
 object bpNeuronNetworks {
 	def main (args:Array[String]) {
-		val hiddenUnits:HiddenLayer = new HiddenLayer("hidden-conf.xml", null)
-		val inputUnits:InputLayer = new InputLayer("input-conf.xml", hiddenUnits)
-		inputUnits.start()
+		
+		bpNeuronNetworksSetup.init
+		
+		val hiddenUnits:HiddenLayer = new HiddenLayer("hidden-conf.xml", null, 
+			SparkEnv.get)
+		val inputUnits:InputLayer = new InputLayer("input-conf.xml", hiddenUnits, 
+			SparkEnv.get)
+		
 		hiddenUnits.start()
+		inputUnits.start()
 		inputUnits ! "initializeUnits"
 		inputUnits ! "start"
 	}

@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"run",
+				"runUnits"
+			],
+			[
+				"bpN",
+				"bpNeuronNetworksSetup"
+			],
+			[
+				"bp",
+				"bpNeuronNetworksSetup"
+			],
+			[
+				"conf",
+				"confPath"
+			],
+			[
+				"sp",
+				"SparkCtx"
+			],
+			[
+				"Spark",
+				"SparkContext"
+			],
+			[
+				"spark",
+				"SparkContext"
+			],
+			[
 				"input",
 				"inputPath"
 			],
@@ -110,10 +138,6 @@
 			[
 				"num",
 				"numNeurons"
-			],
-			[
-				"conf",
-				"confPath	"
 			],
 			[
 				"L",
@@ -244,18 +268,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/main/scala/neurons/inputNeurons.scala",
+			"file": "build.sbt",
 			"settings":
 			{
-				"buffer_size": 2538,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/main/scala/main.scala",
-			"settings":
-			{
-				"buffer_size": 348,
+				"buffer_size": 330,
 				"line_ending": "Unix"
 			}
 		},
@@ -263,7 +279,31 @@
 			"file": "src/main/scala/neurons/hiddenNeurons.scala",
 			"settings":
 			{
-				"buffer_size": 475,
+				"buffer_size": 1157,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/neurons/inputNeurons.scala",
+			"settings":
+			{
+				"buffer_size": 1883,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/zhunan/Documents/Course@McGill/Machine Learning/Assignments/4/assignment_4.tex",
+			"settings":
+			{
+				"buffer_size": 2143,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/globalenv.scala",
+			"settings":
+			{
+				"buffer_size": 1050,
 				"line_ending": "Unix"
 			}
 		},
@@ -271,23 +311,31 @@
 			"file": "src/main/scala/neurons/NeuronUnit.scala",
 			"settings":
 			{
-				"buffer_size": 444,
+				"buffer_size": 353,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "global-conf.xml",
+			"file": "input-conf.xml",
 			"settings":
 			{
-				"buffer_size": 394,
+				"buffer_size": 620,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main/scala/utils/xmlparser.scala",
+			"file": "src/main/scala/neurons/neuronsLayer.scala",
 			"settings":
 			{
-				"buffer_size": 1371,
+				"buffer_size": 346,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/main.scala",
+			"settings":
+			{
+				"buffer_size": 456,
 				"line_ending": "Unix"
 			}
 		}
@@ -348,6 +396,15 @@
 	},
 	"file_history":
 	[
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/main.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/global-conf.xml",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/neuronsLayer.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/utils/LayerConf.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/hidden-conf.xml",
+		"/Users/zhunan/codes/spark_based_bbnp/input-conf.xml",
+		"/Users/zhunan/codes/spark_based_bbnp/.gitignore",
+		"/Users/zhunan/codes/spark_based_bbnp/hidden-conf:xml",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/NeuronUnit.scala",
 		"/Users/zhunan/codes/scala_based_bp_neural_networks/global-conf.xml",
 		"/Users/zhunan/codes/scala_based_bp_neural_networks/src/main/scala/utils/xmlparser.scala",
 		"/Users/zhunan/codes/scala_based_bp_neural_networks/build.sbt",
@@ -504,108 +561,108 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/main/scala/neurons/inputNeurons.scala",
+					"file": "build.sbt",
 					"settings":
 					{
-						"buffer_size": 2538,
+						"buffer_size": 330,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								941,
-								941
+								220,
+								220
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Scala/Scala.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 589.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/main/scala/main.scala",
-					"settings":
-					{
-						"buffer_size": 348,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								347,
-								347
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Scala/Scala.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "src/main/scala/neurons/hiddenNeurons.scala",
 					"settings":
 					{
-						"buffer_size": 475,
+						"buffer_size": 1157,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								437,
-								437
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Scala/Scala.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/main/scala/neurons/NeuronUnit.scala",
-					"settings":
-					{
-						"buffer_size": 444,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								154,
-								162
+								1007,
+								1007
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Scala/Scala.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 468.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/main/scala/neurons/inputNeurons.scala",
+					"settings":
+					{
+						"buffer_size": 1883,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1462,
+								1462
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 776.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/zhunan/Documents/Course@McGill/Machine Learning/Assignments/4/assignment_4.tex",
+					"settings":
+					{
+						"buffer_size": 2143,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -615,18 +672,72 @@
 				},
 				{
 					"buffer": 4,
-					"file": "global-conf.xml",
+					"file": "src/main/scala/globalenv.scala",
 					"settings":
 					{
-						"buffer_size": 394,
+						"buffer_size": 1050,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								824,
+								824
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/main/scala/neurons/NeuronUnit.scala",
+					"settings":
+					{
+						"buffer_size": 353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								339,
+								339
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "input-conf.xml",
+					"settings":
+					{
+						"buffer_size": 620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								564,
+								564
 							]
 						],
 						"settings":
@@ -641,11 +752,37 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/main/scala/utils/xmlparser.scala",
+					"buffer": 7,
+					"file": "src/main/scala/neurons/neuronsLayer.scala",
 					"settings":
 					{
-						"buffer_size": 1371,
+						"buffer_size": 346,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								322,
+								322
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/main/scala/main.scala",
+					"settings":
+					{
+						"buffer_size": 456,
 						"regions":
 						{
 						},

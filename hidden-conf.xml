@@ -1,0 +1,14 @@
+<configuration>
+	<property>
+		<name>InputLayer.unitNum</name>
+		<value>1</value>
+	</property>
+	<property>
+		<name>InputLayer.inputPath.unit1</name>
+		<value>input_data_set/input_unit1.dat</value>
+	</property>
+	<property>
+		<name>InputLayer.outputRDD.unit1</name>
+		<value>out_input_unit1</value>
+	</property>
+</configuration>
