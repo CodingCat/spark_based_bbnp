@@ -17,8 +17,6 @@ class HiddenLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 	
 	val	units = HashMap[Int, HiddenNeuronUnit]()
 	
-	case class inputReadyMessage(id:Int, inputRDD:RDD[String])
-
 	class HiddenNeuronUnit(id:Int)
 		extends NeuronUnit {
 		
@@ -34,15 +32,13 @@ class HiddenLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 
 	def act() {
 		loop {
-			receive {
+			react {
 				case "init" =>
 					init()
-				case inputReadyMessage(id, inputRDD) =>
+				case inputUnitReadyMessage(id, inputRDD) =>
 					println("receive input from unit " + id)
-				case "testMsg" =>
-					println("haha")
-					runUnits()
-					println("gaga")
+				case testMsgClass(id) =>
+					println("hello world")
 			}
 		}
 	}

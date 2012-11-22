@@ -1,15 +1,15 @@
 <configuration>
 	<property>
 		<name>global.Env.runningMode</name>
-		<value>local</value>
+		<value>cluster</value>
 	</property>
 	<property>
 		<name>global.Env.MasterURI</name>
-		<value>local</value>
+		<value>spark://192.168.2.11:7077</value>
 	</property>
 	<property>
 		<name>global.Env.JarURI</name>
-		<value>local</value>
+		<value>/Users/zhunan/codes/spark_based_bbnp/target/scala-2.9.2/spark-bpnn_2.9.2-1.0.jar</value>
 	</property>
 	<property>
 		<name>global.Env.SparkPath</name>

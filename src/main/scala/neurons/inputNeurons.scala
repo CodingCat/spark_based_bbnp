@@ -7,6 +7,7 @@ import scala.actors
 import scala.actors.Actor
 import scala.util.Random
 
+import spark.RDD
 import spark.SparkEnv
 import spark.SparkContext
 import SparkContext._
@@ -20,7 +21,7 @@ class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 	val units = HashMap[Int, InputNeuronUnit]()
 	
 
-	class InputNeuronUnit(id:Int)//, inRDDname:String, outRDDName:String) 
+	class InputNeuronUnit(id:Int)
 		extends NeuronUnit {
 		
 		var inputPath:String = ""
@@ -31,9 +32,6 @@ class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 			inputPath = conf.getString(
 				(new StringBuilder("InputLayer.inputPath.unit" + neuronIdStr)).toString(),
 				 "all")
-			outputRDDName = conf.getString(
-				(new StringBuilder("InputLayer.outputRDD.unit" + neuronIdStr)).toString(), 
-				"all")
 			numInputSplit = conf.getInt(
 				(new StringBuilder("InputLayer.numInputSplit.unit" + neuronIdStr)).toString(),
 				1)
@@ -41,15 +39,17 @@ class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 
 		override def run() {
 			SparkEnv.set(sparkEnv)
-			outputRDD = bpNeuronNetworksSetup.sc.textFile(inputPath, numInputSplit)
-			nextLayer ! (neuronId, outputRDD) 
-			nextLayer ! "testMsg"
+			val outputRDD:RDD[Float] = bpNeuronNetworksSetup.sc.
+				textFile(inputPath, numInputSplit).map[Float](_.toFloat).cache()
+			nextLayer ! testMsgClass(neuronId)
+			nextLayer ! inputUnitReadyMessage(neuronId, outputRDD) 
+
 		}
 	}
 
 	def act() {
 		loop {
-			receive {
+			react {
 				case "initializeUnits" =>
 					init()
 				case "start" =>
@@ -67,6 +67,7 @@ class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 	override def init() {
 		//parse XML configuration file to get the number of nodes in each layer
 		numNeurons = conf.getInt("InputLayer.unitNum", 1)
+		println("start " + numNeurons + " units")
 		//start numNeurons units
 		for (i <- 1 to numNeurons) 
 			units.put(i, new InputNeuronUnit(i))

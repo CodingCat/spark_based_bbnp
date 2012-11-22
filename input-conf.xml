@@ -5,11 +5,11 @@
 	</property>
 	<property>
 		<name>InputLayer.inputPath.unit1</name>
-		<value>input_data_set/input_unit1.dat</value>
+		<value>input_data_set/input_unit_1</value>
 	</property>
 	<property>
 		<name>InputLayer.inputPath.unit2</name>
-		<value>input_data_set/input_unit1.dat</value>
+		<value>input_data_set/input_unit_2</value>
 	</property>
 	<property>
 		<name>InputLayer.outputRDD.unit1</name>
@@ -17,7 +17,7 @@
 	</property>
 	<property>
 		<name>InputLayer.numInputSplit.unit1</name>
-		<value>2</value>
+		<value>3</value>
 	</property>
 	<property>
 		<name>InputLayer.numInputSplit.unit2</name>
