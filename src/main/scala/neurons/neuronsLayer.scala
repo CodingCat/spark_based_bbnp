@@ -12,9 +12,9 @@ import bpnn.utils.LayerConf
 abstract class NeuronLayer(confPath:String, nLayer:Actor, sEnv:SparkEnv) extends Actor {
 	protected val conf = new LayerConf(confPath)
 	protected val nextLayer:Actor = nLayer
-	protected var numNeurons:Int = 0;
+	protected var numNeurons:Int = 0
 	protected val sparkEnv:SparkEnv = sEnv
-
+	protected var numTrainingInstance:Int = 0
 	def init
 	def runUnits
 }

@@ -35,15 +35,16 @@ class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 			numInputSplit = conf.getInt(
 				(new StringBuilder("InputLayer.numInputSplit.unit" + neuronIdStr)).toString(),
 				1)
+			numTrainingInstance = conf.getInt(
+				(new StringBuilder("InputLayer.numTrainingInstance")).toString(),
+				100)
 		}
 
 		override def run() {
 			SparkEnv.set(sparkEnv)
 			val outputRDD:RDD[Float] = bpNeuronNetworksSetup.sc.
 				textFile(inputPath, numInputSplit).map[Float](_.toFloat).cache()
-			nextLayer ! testMsgClass(neuronId)
 			nextLayer ! inputUnitReadyMessage(neuronId, outputRDD) 
-
 		}
 	}
 
@@ -61,7 +62,14 @@ class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 
 	def initUnits() = { units.foreach((t2) => (t2._2.init())) }
 	
-	override def runUnits() = { units.foreach((t2) => (t2._2.run())) }
+	override def runUnits() {
+		units.foreach((t2) => (t2._2.run())) 
+		//bias term
+		SparkEnv.set(sparkEnv)
+		val biasRDD = bpNeuronNetworksSetup.sc.parallelize(Array.fill[Float](numTrainingInstance)(1))
+		biasRDD.cache()
+		nextLayer ! inputUnitReadyMessage(-1, biasRDD) 
+	}
 
 	// initialize the input layer
 	override def init() {

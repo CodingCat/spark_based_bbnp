@@ -23,4 +23,8 @@
 		<name>InputLayer.numInputSplit.unit2</name>
 		<value>2</value>
 	</property>
+	<property>
+		<name>InputLayer.numTrainingInstance</name>
+		<value>200</value>
+	</property>
 </configuration>

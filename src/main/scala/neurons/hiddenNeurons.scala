@@ -36,7 +36,12 @@ class HiddenLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 				case "init" =>
 					init()
 				case inputUnitReadyMessage(id, inputRDD) =>
-					println("receive input from unit " + id)
+					if (id != -1) {
+						println("receive input from unit " + id)
+					}
+					else {
+						println("receive input from bias unit")
+					}
 				case testMsgClass(id) =>
 					println("hello world")
 			}
