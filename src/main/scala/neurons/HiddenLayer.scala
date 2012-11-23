@@ -17,13 +17,9 @@ class HiddenLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 	
 	val	units = HashMap[Int, HiddenNeuronUnit]()
 	
-	class HiddenNeuronUnit(id:Int)
-		extends NeuronUnit {
+	class HiddenNeuronUnit(id:Int, inputSplit:Int)
+		extends NeuronUnit[Float, Float](id, inputSplit) {
 		
-		override def init(){
-			
-		}
-
 		override def run() {
 			//build spark context
 			

@@ -1,7 +1,7 @@
 <configuration>
 	<property>
 		<name>InputLayer.unitNum</name>
-		<value>2</value>
+		<value>1</value>
 	</property>
 	<property>
 		<name>InputLayer.inputPath.unit1</name>

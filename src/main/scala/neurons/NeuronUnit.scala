@@ -4,13 +4,17 @@ import scala.actors.Actor
 
 import spark.RDD
 import spark.SparkContext
-import SparkContext._
 
-abstract class NeuronUnit() {
-	var neuronId:Int = 0
-	var numInputSplit:Int = 1
-	var inputRDDName:String = null
-	
-	def init()
-	def run()
+import bpnn.utils.LayerConf
+
+abstract class NeuronUnit[InputType, OutputType](
+	protected var neuronId:Int,
+	protected var numInputSplit:Int,
+	private var inputPath:String = null
+	) {
+		var inputRDD:RDD[InputType] = null
+		var outputRDD:RDD[OutputType] = null
+		
+		def run()
+		override def toString = "unit" + neuronId
 }

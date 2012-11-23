@@ -3,7 +3,7 @@ package bpnn.neurons
 import scala.actors.Actor
 import scala.actors.Actor._
 
-class outputNeuron extends Actor {
+class outputLayer extends Actor {
 	private def predictError = 0
 	//private val predictResult = Map[Int, Int]()
 	//private val expectedResult = List[Int]()

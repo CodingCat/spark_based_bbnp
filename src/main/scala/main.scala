@@ -2,7 +2,6 @@ package bpnn
 
 import spark.SparkEnv
 import spark.SparkContext
-import SparkContext._
 
 import bpnn.neurons._
 import bpnn.utils._

@@ -1,7 +1,6 @@
 package bpnn
 
 import spark.SparkContext
-import SparkContext._
 
 import bpnn.utils._
 
