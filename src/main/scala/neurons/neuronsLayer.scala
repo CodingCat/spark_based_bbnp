@@ -1,6 +1,7 @@
 package bpnn.neurons
 
 import scala.actors.Actor
+import scala.collection.mutable.HashMap
 
 import spark.SparkEnv
 import spark.SparkContext

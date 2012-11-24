@@ -17,8 +17,9 @@ object bpNeuronNetworks {
 			SparkEnv.get)
 		
 		hiddenUnits.start()
+		hiddenUnits ! "initializeUnits"
 		inputUnits.start()
 		inputUnits ! "initializeUnits"
-		inputUnits ! "start"
+		
 	}
 }
