@@ -17,24 +17,36 @@ abstract class NeuronUnit[InputType, OutputType](
 		protected var inputRDD:RDD[InputType] = null
 		protected var outputRDD:RDD[OutputType] = null
 		protected var numInputUnit = 0
+		protected var inputWeights:HashMap[String, Float] = new HashMap[String, Float]
+		protected var inputReadyFlags:HashMap[String, Int] = new HashMap[String, Int]
 		protected val RandomGen = new Random()
-		protected val inputWeights:HashMap[String, Float] = new HashMap[String, Float]
-		protected val inputReadyFlags:HashMap[String, Int] = new HashMap[String, Int]
 		
 
-		def init()
+		def init(){
+
+		}
+
 		def run()
 
-		protected def AllInputReady():Boolean = {
+		def AllInputReady():Boolean = {
 			var cnt:Int = 0;
 			inputReadyFlags.foreach((t2) => if (t2._2 == 1) cnt = cnt + 1)
 			cnt == numInputUnit  
+		}
+
+		def resetReadyFlags() { inputReadyFlags.foreach(
+			(t2) => inputReadyFlags(t2._1) = 0) }
+
+		def markReadyUnit(readyUnit:String) {
+			inputReadyFlags(readyUnit) = 1
 		}
 
 		def registerInputUnits(unitName:String) {
 			inputWeights.put(unitName, RandomGen.nextFloat())
 			inputReadyFlags.put(unitName, 0)
 		}
+
+		def hasThisInputUnit(candidate:String):Boolean = inputWeights.contains(candidate)
 
 		override def toString = "unit" + neuronId
 }

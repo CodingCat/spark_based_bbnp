@@ -37,7 +37,7 @@ class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 			SparkEnv.set(sparkEnv)
 			outputRDD = bpNeuronNetworksSetup.sc.
 				textFile(inputPath, numInputSplit).map[Float](_.toFloat).cache()
-			nextLayer ! InputUnitReadyMessage(neuronId, outputRDD) 
+			nextLayer ! InputUnitReadyMessage(this.toString, outputRDD) 
 		}
 	}
 

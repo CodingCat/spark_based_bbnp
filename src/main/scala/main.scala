@@ -20,6 +20,6 @@ object bpNeuronNetworks {
 		hiddenUnits ! "initializeUnits"
 		inputUnits.start()
 		inputUnits ! "initializeUnits"
-		
+		inputUnits ! "start"
 	}
 }

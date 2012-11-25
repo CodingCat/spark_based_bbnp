@@ -16,5 +16,5 @@ abstract class NeuronLayer(confPath:String, nLayer:Actor, sEnv:SparkEnv) extends
 	protected var numTrainingInstance:Int = 0
 	
 	def init
-	def runUnits
+	def runUnits {}
 }

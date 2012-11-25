@@ -24,14 +24,6 @@
 		<value>1,2</value>
 	</property>
 	<property>
-		<name>InputLayer.numInputSplit.unit1</name>
-		<value>1</value>
-	</property>
-	<property>
-		<name>InputLayer.numInputSplit.unit2</name>
-		<value>1</value>
-	</property>
-	<property>
 		<name>InputLayer.numTrainingInstance</name>
 		<value>200</value>
 	</property>

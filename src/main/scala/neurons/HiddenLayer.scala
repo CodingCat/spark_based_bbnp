@@ -21,12 +21,12 @@ class HiddenLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 		extends NeuronUnit[Float, Float](id, inputSplit) {
 		
 		override def init() {
-
+			numInputUnit = conf.getInt("HiddenLayer.numInputUnit." + this.toString, 1)
 		}
 
 		override def run() {
 			//build spark context
-			
+			println(this.toString + " is executing")
 		}
 	}
 
@@ -37,26 +37,25 @@ class HiddenLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 					init()
 				case RegisterInputUnitMsg(srcUnitName, dstUnitName) =>
 					println("register " + srcUnitName + " to " + dstUnitName)
-					targetUnit:HiddenNeuronUnit = units.get(dstUnitName).get
-					targetUnit.get.registerInputUnits(srcUnitName)
-				case InputUnitReadyMessage(id, inputRDD) =>
-					if (id != -1) {
-						println("receive input from unit " + id)
-					}
-					else {
-						println("receive input from bias unit")
-					}
-					//pipeline the processing
-					if (targetUnit.get(dstUnitName).get.AllInputReady()) targetUnit.run()
+					units.get(dstUnitName).get.registerInputUnits(srcUnitName)
+				case InputUnitReadyMessage(readyUnit, inputRDD) =>
+					units.foreach(
+						t2 => 
+						{
+							if (t2._2.hasThisInputUnit(readyUnit)) {
+								println(readyUnit + "  is ready for " + t2._2.toString)
+								t2._2.markReadyUnit(readyUnit)
+								if (t2._2.AllInputReady()) {
+									t2._2.run()
+									t2._2.resetReadyFlags()
+								}
+							}
+						}
+					)
 			}
 		}
 	}
 	
-	override def runUnits() {
-		SparkEnv.set(sparkEnv)
-		bpNeuronNetworksSetup.sc.textFile("input_data_set/input_unit1.dat", 1)
-	}	
-
 	override def init() {
 		//parse XML configuration file to get the number of nodes in each layer
 		numNeurons = conf.getInt("HiddenLayer.unitNum", 1)
