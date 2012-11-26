@@ -6,6 +6,7 @@ import spark.RDD
 import spark.SparkEnv
 import spark.SparkContext
 
+import bpnn._
 import bpnn.utils._
 
 class BiasNeuronUnit(private val nextLayer:NeuronLayer)

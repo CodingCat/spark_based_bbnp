@@ -11,4 +11,12 @@
 		<name>HiddenLayer.numInputUnit.unit2</name>
 		<value>3</value>
 	</property>
+	<property>
+		<name>HiddenLayer.OutDst.unit1</name>
+		<value>1</value>
+	</property>
+	<property>
+		<name>HiddenLayer.OutDst.unit2</name>
+		<value>1</value>
+	</property>
 </configuration>

@@ -1,6 +1,8 @@
-package bpnn.utils
+package bpnn
 
 import spark.SparkContext
+
+import bpnn.utils._
 
 object bpNeuronNetworksSetup {
 	var sc:SparkContext = null	

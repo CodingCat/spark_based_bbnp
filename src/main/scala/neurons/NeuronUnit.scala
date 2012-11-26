@@ -7,6 +7,7 @@ import scala.util.Random
 import spark.RDD
 import spark.SparkContext
 
+import bpnn._
 import bpnn.utils._
 
 abstract class NeuronUnit[InputType, OutputType](

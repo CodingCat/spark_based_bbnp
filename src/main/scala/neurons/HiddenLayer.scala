@@ -1,14 +1,11 @@
 package bpnn.neurons
 
-import scala.actors.Actor
-import scala.actors.Actor._
 import scala.collection.mutable.HashMap
 
 import java.lang.String
 
 import spark.SparkEnv
 import spark.SparkContext
-import SparkContext._
 import spark.RDD
 
 import bpnn._
@@ -24,6 +21,12 @@ class HiddenLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 		
 		override def init() {
 			numInputUnit = conf.getInt("HiddenLayer.numInputUnit." + this.toString, 1)
+			//1. get output unit list
+			val outStr = conf.getString("HiddenLayer.OutDst." + this.toString, "unit1")
+			//2. Converst outList to list
+			val outList = outStr.split(',')
+			for (i <- 1 to outList.length) 
+				nextLayer ! RegisterInputUnitMsg(this.toString, "unit" + i)
 		}
 
 		override def run() {
@@ -35,6 +38,8 @@ class HiddenLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 	def act() {
 		loop {
 			react {
+				case "start" =>
+					nextLayer ! PrevLayerReadyMsg(this)
 				case "init" =>
 					init()
 				case RegisterInputUnitMsg(srcUnitName, dstUnitName) =>
@@ -89,9 +94,9 @@ class HiddenLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 			units.get(unitName).get.init()
 		}
 		//add bias unit
-	//	biasUnit = new BiasNeuronUnit(nextLayer)
-	//	biasUnit.init
-		//biasUnit.run
+		biasUnit = new BiasNeuronUnit(nextLayer)
+		biasUnit.init
+	
 		prevLayer.start
 		prevLayer ! "start"
 	} 
