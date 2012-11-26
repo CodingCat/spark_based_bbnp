@@ -11,15 +11,18 @@ object bpNeuronNetworks {
 		
 		bpNeuronNetworksSetup.init
 		
-		val hiddenUnits:HiddenLayer = new HiddenLayer("hidden-conf.xml", null, 
+		val inputUnits:InputLayer = new InputLayer("input-conf.xml", "InputLayer",
 			SparkEnv.get)
-		val inputUnits:InputLayer = new InputLayer("input-conf.xml", hiddenUnits, 
+		val hiddenUnits:HiddenLayer = new HiddenLayer("hidden-conf.xml", "HiddenLayer",
 			SparkEnv.get)
 		
-		hiddenUnits.start()
-		hiddenUnits ! "initializeUnits"
-		inputUnits.start()
-		inputUnits ! "initializeUnits"
-		inputUnits ! "start"
+		inputUnits.setNextLayer(hiddenUnits)
+		hiddenUnits.setPrevLayer(inputUnits)
+		
+		hiddenUnits.start
+		hiddenUnits ! "init"
+		/*inputUnits.start
+		inputUnits ! "init"*/
+		//inputUnits ! "run"
 	}
 }

@@ -5,10 +5,10 @@
 	</property>
 	<property>
 		<name>HiddenLayer.numInputUnit.unit1</name>
-		<value>2</value>
+		<value>3</value>
 	</property>
 	<property>
 		<name>HiddenLayer.numInputUnit.unit2</name>
-		<value>2</value>
+		<value>3</value>
 	</property>
 </configuration>

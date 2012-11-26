@@ -15,4 +15,8 @@
 		<name>global.Env.SparkPath</name>
 		<value>/Users/zhunan/codes/spark-0.6.0/</value>
 	</property>
+	<property>
+		<name>global.TrainingSet.Num</name>
+		<value>200</value>
+	</property>
 </configuration>

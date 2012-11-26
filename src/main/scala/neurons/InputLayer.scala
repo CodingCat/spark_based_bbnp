@@ -15,11 +15,11 @@ import spark.SparkContext
 import bpnn._
 import bpnn.utils._
 
-class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv) 
-	extends NeuronLayer(confPath, nextL, sEnv) {
+class InputLayer(confPath:String, layerName:String, sEnv:SparkEnv) 
+	extends NeuronLayer(confPath, layerName, sEnv) {
 	
 	val units = new HashMap[String, InputNeuronUnit]()
-
+	
 	class InputNeuronUnit(id:Int, inputSplit:Int, inputPath:String)
 		extends NeuronUnit[String, Float](id,inputSplit,inputPath) {
 		
@@ -44,9 +44,11 @@ class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 	def act() {
 		loop {
 			react {
-				case "initializeUnits" =>
-					init()
 				case "start" =>
+					nextLayer ! PrevLayerReadyMsg(this)
+				case "init" =>
+					init()
+				case "run" =>
 					println("start run")
 					runUnits()
 			}
@@ -55,17 +57,20 @@ class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 
 	
 	override def runUnits() {
-		units.foreach((t2) => (t2._2.run())) 
-		//bias term
-		SparkEnv.set(sparkEnv)
-		val biasRDD = bpNeuronNetworksSetup.sc.parallelize(Array.fill[Float](numTrainingInstance)(1))
-		biasRDD.cache()
-		//nextLayer ! InputUnitReadyMessage(-1, biasRDD) 
+		units.foreach(
+			t2 => 
+			{
+				println(t2._2 + " is running")
+				t2._2.run()
+			}
+		) 
+		biasUnit.run
 	}
 
 	//initialize the input layer
 	override def init() {
 		//parse XML configuration file to get the number of nodes in each layer
+		SparkEnv.set(sparkEnv)
 		numNeurons = conf.getInt("InputLayer.unitNum", 1)
 		println("InputLayer starts " + numNeurons + " units")
 		//start numNeurons units
@@ -75,7 +80,12 @@ class InputLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 				new InputNeuronUnit(i, 
 					conf.getInt("InputLayer.numInputSplit." + unitName, 1),
 					conf.getString("InputLayer.inputPath." + unitName, null)))
-			units.get(unitName).get.init()
+			units.get(unitName).get.init
 		}
+
+		//add bias unit
+		//units.put(biasUnit.toString, biasUnit)
+		biasUnit = new BiasNeuronUnit(nextLayer)
+		biasUnit.init
 	}
 }

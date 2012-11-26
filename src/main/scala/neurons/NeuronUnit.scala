@@ -7,7 +7,7 @@ import scala.util.Random
 import spark.RDD
 import spark.SparkContext
 
-import bpnn.utils.LayerConf
+import bpnn.utils._
 
 abstract class NeuronUnit[InputType, OutputType](
 	protected var neuronId:Int,
@@ -20,7 +20,8 @@ abstract class NeuronUnit[InputType, OutputType](
 		protected var inputWeights:HashMap[String, Float] = new HashMap[String, Float]
 		protected var inputReadyFlags:HashMap[String, Int] = new HashMap[String, Int]
 		protected val RandomGen = new Random()
-		
+		protected val numTrainingInstance:Int = bpNeuronNetworksSetup.globalConf.
+			getInt("global.TrainingSet.Num", 100)
 
 		def init(){
 

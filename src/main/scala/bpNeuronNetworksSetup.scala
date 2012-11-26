@@ -1,14 +1,13 @@
-package bpnn
+package bpnn.utils
 
 import spark.SparkContext
 
-import bpnn.utils._
-
 object bpNeuronNetworksSetup {
 	var sc:SparkContext = null	
+	val globalConf:LayerConf = new LayerConf("global-conf.xml")
+
 	def init() {
 		if (sc == null) {
-			val globalConf:LayerConf = new LayerConf("global-conf.xml")
 			if (globalConf.getString("global.Env.runningMode", "local") == "local") {
 				sc = new SparkContext(
 					globalConf.getString("global.Env.MasterURI", "local[1]"),

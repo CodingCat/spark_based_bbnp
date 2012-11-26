@@ -4,6 +4,8 @@ import scala.actors.Actor
 import scala.actors.Actor._
 import scala.collection.mutable.HashMap
 
+import java.lang.String
+
 import spark.SparkEnv
 import spark.SparkContext
 import SparkContext._
@@ -12,8 +14,8 @@ import spark.RDD
 import bpnn._
 import bpnn.utils.LayerConf
 
-class HiddenLayer(confPath:String, nextL:Actor, sEnv:SparkEnv) 
-	extends NeuronLayer(confPath, nextL, sEnv) {
+class HiddenLayer(confPath:String, layerName:String, sEnv:SparkEnv) 
+	extends NeuronLayer(confPath, layerName:String, sEnv) {
 	
 	val units = new HashMap[String, HiddenNeuronUnit]()
 	
@@ -33,11 +35,27 @@ class HiddenLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 	def act() {
 		loop {
 			react {
-				case "initializeUnits" =>
+				case "init" =>
 					init()
 				case RegisterInputUnitMsg(srcUnitName, dstUnitName) =>
-					println("register " + srcUnitName + " to " + dstUnitName)
-					units.get(dstUnitName).get.registerInputUnits(srcUnitName)
+					{
+						if (srcUnitName.length >= 8){
+							if (srcUnitName.substring(0, 8).equals("biasUnit")) {
+								//it's bias unit, so we should register it for every neuron
+								//unit in this layer
+								units.foreach(t2 => 
+									{
+										println("register biasUnit to " + t2._1)
+										t2._2.registerInputUnits(srcUnitName)
+									}
+								)
+							}
+						}
+						else {
+							println("register " + srcUnitName + " to " + dstUnitName)
+							units.get(dstUnitName).get.registerInputUnits(srcUnitName)
+						}
+					}
 				case InputUnitReadyMessage(readyUnit, inputRDD) =>
 					units.foreach(
 						t2 => 
@@ -52,6 +70,8 @@ class HiddenLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 							}
 						}
 					)
+				case PrevLayerReadyMsg(readyLayer) =>
+					readyLayer ! "init"
 			}
 		}
 	}
@@ -68,5 +88,12 @@ class HiddenLayer(confPath:String, nextL:Actor, sEnv:SparkEnv)
 					conf.getInt("HiddenLayer.numInputSplit." + unitName, 1)))
 			units.get(unitName).get.init()
 		}
+		//add bias unit
+	//	biasUnit = new BiasNeuronUnit(nextLayer)
+	//	biasUnit.init
+		//biasUnit.run
+		prevLayer.start
+		prevLayer ! "start"
 	} 
+
 }
