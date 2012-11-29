@@ -15,7 +15,7 @@ abstract class NeuronUnit[InputType, OutputType](
 	protected var numInputSplit:Int,
 	private var inputPath:String = null
 	) {
-		protected var inputRDD:RDD[InputType] = null
+		protected var inputRDDList:HashMap[String, RDD[InputType]] = null
 		protected var outputRDD:RDD[OutputType] = null
 		protected var numInputUnit = 0
 		protected var inputWeights:HashMap[String, Float] = new HashMap[String, Float]
@@ -46,6 +46,7 @@ abstract class NeuronUnit[InputType, OutputType](
 		def registerInputUnits(unitName:String) {
 			inputWeights.put(unitName, RandomGen.nextFloat())
 			inputReadyFlags.put(unitName, 0)
+			inputRDDList.put(unitName, null)
 		}
 
 		def hasThisInputUnit(candidate:String):Boolean = inputWeights.contains(candidate)

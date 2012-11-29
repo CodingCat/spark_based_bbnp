@@ -39,6 +39,7 @@ class InputLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 				textFile(inputPath, numInputSplit).map[Float](_.toFloat).cache()
 			nextLayer ! InputUnitReadyMessage(this.toString, outputRDD) 
 		}
+
 	}
 
 	def act() {
