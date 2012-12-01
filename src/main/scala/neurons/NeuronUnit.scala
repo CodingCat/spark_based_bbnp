@@ -9,13 +9,15 @@ import spark.SparkContext
 
 import bpnn._
 import bpnn.utils._
+import bpnn.system._
 
 abstract class NeuronUnit[InputType, OutputType](
 	protected var neuronId:Int,
 	protected var numInputSplit:Int,
 	private var inputPath:String = null
 	) {
-		protected var inputRDDList:HashMap[String, RDD[InputType]] = null
+		protected var inputRDDList:HashMap[String, RDD[InputType]] = 
+			new HashMap[String, RDD[InputType]];
 		protected var outputRDD:RDD[OutputType] = null
 		protected var numInputUnit = 0
 		protected var inputWeights:HashMap[String, Float] = new HashMap[String, Float]
@@ -33,6 +35,7 @@ abstract class NeuronUnit[InputType, OutputType](
 		def AllInputReady():Boolean = {
 			var cnt:Int = 0;
 			inputReadyFlags.foreach((t2) => if (t2._2 == 1) cnt = cnt + 1)
+			println(cnt + ":" + numInputUnit)
 			cnt == numInputUnit  
 		}
 
@@ -46,10 +49,12 @@ abstract class NeuronUnit[InputType, OutputType](
 		def registerInputUnits(unitName:String) {
 			inputWeights.put(unitName, RandomGen.nextFloat())
 			inputReadyFlags.put(unitName, 0)
-			inputRDDList.put(unitName, null)
 		}
 
 		def hasThisInputUnit(candidate:String):Boolean = inputWeights.contains(candidate)
+
+		
+		//def transformInputRDD(key:String, readyRDD:RDD[Any])
 
 		override def toString = "unit" + neuronId
 }

@@ -13,6 +13,7 @@ import spark.SparkEnv
 import spark.SparkContext
 
 import bpnn._
+import bpnn.system.LayerCoordinator
 import bpnn.utils._
 
 class InputLayer(confPath:String, layerName:String, sEnv:SparkEnv) 
@@ -37,6 +38,7 @@ class InputLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 			SparkEnv.set(sparkEnv)
 			outputRDD = bpNeuronNetworksSetup.sc.
 				textFile(inputPath, numInputSplit).map[Float](_.toFloat).cache()
+			println(outputRDD.count)
 			nextLayer ! InputUnitReadyMessage(this.toString, outputRDD) 
 		}
 
@@ -49,6 +51,7 @@ class InputLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 					nextLayer ! PrevLayerReadyMsg(this)
 				case "init" =>
 					init()
+					LayerCoordinator ! LayerReadyMsg(this)
 				case "run" =>
 					println("start run")
 					runUnits()

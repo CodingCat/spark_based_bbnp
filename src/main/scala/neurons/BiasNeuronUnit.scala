@@ -18,7 +18,7 @@ class BiasNeuronUnit(private val nextLayer:NeuronLayer)
 
 	override def run() {
 		outputRDD = bpNeuronNetworksSetup.sc.parallelize(
-			Array.fill[Float](numTrainingInstance)(1))
+			Array.fill[Float](numTrainingInstance)(1), 1)
 		nextLayer ! InputUnitReadyMessage(this.toString, outputRDD) 
 	}
 

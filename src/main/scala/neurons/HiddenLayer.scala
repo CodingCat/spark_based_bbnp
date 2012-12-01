@@ -8,9 +8,11 @@ import java.lang.String
 import spark.SparkEnv
 import spark.SparkContext
 import spark.RDD
+import spark.rdd.HadoopRDD
 
 import bpnn._
 import bpnn.utils.ZippedRDD
+import bpnn.system.LayerCoordinator
 import bpnn.utils.LayerConf
 
 class HiddenLayer(confPath:String, layerName:String, sEnv:SparkEnv) 
@@ -22,6 +24,7 @@ class HiddenLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 		extends NeuronUnit[Float, Float](id, inputSplit) {
 		
 		override def init() {
+			SparkEnv.set(sparkEnv)
 			numInputUnit = conf.getInt("HiddenLayer.numInputUnit." + this.toString, 1)
 			//1. get output unit list
 			val outStr = conf.getString("HiddenLayer.OutDst." + this.toString, "unit1")
@@ -35,26 +38,42 @@ class HiddenLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 			//implement the activation function here
 			//take into all input dataset into consideration
 			//Description of the algorithm here:
-			var cnt = 1
-			val a:Array[RDD[Float]] = new Array[RDD[Float]](inputRDDList.size)
 			SparkEnv.set(sparkEnv)
+			val a:Array[RDD[Float]] = new Array[RDD[Float]](inputRDDList.size)
 			inputRDDList.values.copyToArray(a)
 			var zippedRDD:ZippedRDD[Float, Float] = null
 			var mergedRDD:RDD[Float] = null
 			//merge the input RDDs one by one with zippedRDD
 			for (i <- 0 to a.length - 2) {
-				zippedRDD = new ZippedRDD[Float, Float](bpNeuronNetworksSetup.sc, 
-					a(i), a(i + 1))
+				println("here")
+				if (mergedRDD == null) {
+					zippedRDD = new ZippedRDD[Float, Float](bpNeuronNetworksSetup.sc, 
+						a(i), a(i + 1))
+				}
+				else {
+					zippedRDD = new ZippedRDD[Float, Float](bpNeuronNetworksSetup.sc, 
+						mergedRDD, a(i + 1))
+				}
 				mergedRDD = zippedRDD.map(t2 => t2._1 + t2._2)
 			}
-			outputRDD = mergedRDD.map(t => exp(t))
+			outputRDD = mergedRDD.map[Float](t => (1/(1 + math.exp(t.toDouble))).toFloat)
+			println(outputRDD.count)
+			resetReadyFlags()
 			nextLayer ! InputUnitReadyMessage(this.toString, outputRDD)
 		}
 
+
+
 		def transformInputRDD(key:String, readyRDD:RDD[Float]) {
+			SparkEnv.set(sparkEnv)
+			println(key)
+			println(inputWeights.get(key).get)
+			if (readyRDD == null) println("bad")
 			inputRDDList.put(key, readyRDD.map(inputEle => inputEle * 
-									inputWeights.get(key).get))
+							inputWeights.get(key).get))
+			//println(readyRDD.count)
 		}
+
 	}
 
 	def act() {
@@ -64,6 +83,8 @@ class HiddenLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 					nextLayer ! PrevLayerReadyMsg(this)
 				case "init" =>
 					init()
+					biasUnit.run
+					LayerCoordinator ! LayerReadyMsg(this)
 				case RegisterInputUnitMsg(srcUnitName, dstUnitName) =>
 					{
 						if (srcUnitName.length >= 8){
@@ -91,10 +112,9 @@ class HiddenLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 								println(readyUnit + "  is ready for " + t2._2.toString)
 								t2._2.markReadyUnit(readyUnit)
 								//transform readyRDD by multiply it with weights
-								t2._2.transformInputRDD(readyUnit.toString, readyRDD)
+								t2._2.transformInputRDD(readyUnit, readyRDD)
 								if (t2._2.AllInputReady()) {
 									t2._2.run()
-									t2._2.resetReadyFlags()
 								}
 							}
 						}

@@ -12,24 +12,12 @@
 		<value>input_data_set/input_unit_2</value>
 	</property>
 	<property>
-		<name>InputLayer.inputPath.unit3</name>
-		<value>input_data_set/input_unit_2</value>
-	</property>
-	<property>
-		<name>InputLayer.outputRDD.unit1</name>
-		<value>out_input_unit1</value>
-	</property>
-	<property>
 		<name>InputLayer.OutDst.unit1</name>
 		<value>1,2</value>
 	</property>
 	<property>
 		<name>InputLayer.OutDst.unit2</name>
 		<value>1,2</value>
-	</property>
-	<property>
-		<name>InputLayer.OutDst.unit3</name>
-		<value>1</value>
 	</property>
 	<property>
 		<name>InputLayer.numTrainingInstance</name>

@@ -5,6 +5,7 @@ import spark.SparkContext
 
 import bpnn.neurons._
 import bpnn.utils._
+import bpnn.system.LayerCoordinator
 
 object bpNeuronNetworks {
 	def main (args:Array[String]) {
@@ -19,6 +20,12 @@ object bpNeuronNetworks {
 		val outputUnits:OutputLayer = new OutputLayer("output-conf.xml", "OutputLayer", 
 			SparkEnv.get)
 		
+		LayerCoordinator.addLayer(inputUnits)
+		LayerCoordinator.addLayer(hiddenUnits)
+		LayerCoordinator.addLayer(outputUnits)
+		LayerCoordinator.setInputLayer(inputUnits)
+		LayerCoordinator.start
+
 		inputUnits.setNextLayer(hiddenUnits)
 		hiddenUnits.setPrevLayer(inputUnits)
 		hiddenUnits.setNextLayer(outputUnits)
@@ -26,8 +33,5 @@ object bpNeuronNetworks {
 		
 		outputUnits.start
 		outputUnits ! "init"
-		/*inputUnits.start
-		inputUnits ! "init"*/
-		//inputUnits ! "run"
 	}
 }

@@ -35,7 +35,9 @@ class ZippedRDD[T: ClassManifest, U: ClassManifest](
   @transient
   val splits_ : Array[Split] = {
     if (rdd1 != null && rdd2 != null && rdd1.splits.size != rdd2.splits.size) {
-      throw new IllegalArgumentException("Can't zip RDDs with unequal numbers of partitions")
+      throw new IllegalArgumentException(
+        "Can't zip RDDs with unequal numbers of partitions, where rdd1 = " + rdd1.splits.size + 
+        " rdd2 = " + rdd2.splits.size)
     }
     val array = new Array[Split](rdd1.splits.size)
   
