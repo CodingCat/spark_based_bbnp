@@ -15,10 +15,10 @@ import bpnn.system.LayerCoordinator
 import neuronunits._
 
 class HiddenLayer(
-	private val confPath:String, 
+	confPath:String, 
 	layerName:String, 
 	sEnv:SparkEnv) 
-	extends NeuronLayer(layerName:String, sEnv) {
+	extends NeuronLayer(confPath:String, layerName:String, sEnv) {
 	
 	private val units = new HashMap[String, HiddenNeuronUnit]()
 	
@@ -63,9 +63,8 @@ class HiddenLayer(
 	
 	override def init() {
 		//parse XML configuration file to get the number of nodes in each layer
-		LayerConf.loadConfiguration(confPath)
-		val numInputSplits:Int = LayerConf.getInt("HiddenLayer.numInputSplits", 1)
-		numNeurons = LayerConf.getInt("HiddenLayer.unitNum", 1)
+		val numInputSplits:Int = conf.getInt("HiddenLayer.numInputSplits", 1)
+		numNeurons = conf.getInt("HiddenLayer.unitNum", 1)
 		println("Hidden Layer starts " + numNeurons + " units")
 		//start numNeurons units
 		for (i <- 1 to numNeurons) {
@@ -77,7 +76,7 @@ class HiddenLayer(
 			nextLayer ! RegisterInputUnitMsg(units.get(unitName).get.toString)
 		}
 		//add bias unit
-		biasUnit = new BiasNeuronUnit(nextLayer)
+		biasUnit = new BiasNeuronUnit(bpNeuronNetworksSetup.numInstance, nextLayer)
 		biasUnit.init
 	
 		prevLayer.start

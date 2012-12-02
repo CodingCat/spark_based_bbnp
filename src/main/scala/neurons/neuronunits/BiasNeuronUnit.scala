@@ -12,17 +12,17 @@ import bpnn.neurons._
 
 @SerialVersionUID(50L)
 class BiasNeuronUnit(
+	private val numInstance:Int, 
 	private val nextLayer:NeuronLayer)
 		extends NeuronUnit[String, Float](0, 1) with Serializable{
 
 	override def init() {
-		LayerConf.loadConfiguration("global-conf.xml")
 		nextLayer ! RegisterInputUnitMsg(this.toString)
 	}
 
 	override def run():Boolean = {
 		outputRDD = bpNeuronNetworksSetup.sc.parallelize(
-			Array.fill[Float](LayerConf.getInt("global.TrainingSet.Num", 100))(1), 1)
+			Array.fill[Float](numInstance)(1), 1)
 		true
 	}
 

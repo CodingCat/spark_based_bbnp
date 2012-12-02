@@ -12,8 +12,8 @@ import bpnn.system.LayerCoordinator
 import neuronunits._
 
 class OutputLayer(
-	private val confPath:String, layerName:String, sEnv:SparkEnv) 
-	extends NeuronLayer(layerName, sEnv) {
+	confPath:String, layerName:String, sEnv:SparkEnv) 
+	extends NeuronLayer(confPath, layerName, sEnv) {
 	
 	private val units = new HashMap[String, OutputNeuronUnit]()
 	
@@ -52,10 +52,9 @@ class OutputLayer(
 	//initialize the input layer
 	override def init() {
 		//parse XML configuration file to get the number of nodes in each layer
-		LayerConf.loadConfiguration(confPath)
-		val numInputSplits:Int = LayerConf.getInt("OutputLayer.numInputSplits", 1)
+		val numInputSplits:Int = conf.getInt("OutputLayer.numInputSplits", 1)
 		SparkEnv.set(sparkEnv)
-		numNeurons = LayerConf.getInt("OutputLayer.unitNum", 1)
+		numNeurons = conf.getInt("OutputLayer.unitNum", 1)
 		println("OutputLayer starts " + numNeurons + " units")
 		//start numNeurons units
 		for (i <- 1 to numNeurons) {
@@ -63,7 +62,7 @@ class OutputLayer(
 			units.put(unitName, 
 				new OutputNeuronUnit(i, 
 					numInputSplits,
-					LayerConf.getString("OutputLayer.inputPath." + unitName, null)))
+					conf.getString("OutputLayer.inputPath." + unitName, null)))
 			units.get(unitName).get.init
 		}
 		prevLayer.start

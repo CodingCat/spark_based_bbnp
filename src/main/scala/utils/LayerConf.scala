@@ -5,19 +5,15 @@ import scala.collection.mutable.HashMap
 import scala.collection.mutable.ArraySeq
 import scala.collection.mutable.StringBuilder
 
-object LayerConf {
+class LayerConf (confPath:String) extends Serializable{
 	//constructor
-	private var confFile:Elem = null
+	private var confFile:Elem = XML.loadFile(confPath)
 	private val propertyMap:HashMap[String, String] = new HashMap[String, String]()
 
-	
-	def loadConfiguration(confPath:String){
-		confFile = XML.loadFile(confPath)
-		for (property <- confFile \\ "property") {
-			propertyMap.put((property \\ "name").text,  (property \\ "value").text)
-		}
+	for (property <- confFile \\ "property") {
+		propertyMap.put((property \\ "name").text,  (property \\ "value").text)
 	}
-
+	
 	def getInt(propertyName:String, defaultValue:Int):Int = {
 		if (propertyMap.contains(propertyName) == true) {
 			propertyMap.get(propertyName).get.toInt

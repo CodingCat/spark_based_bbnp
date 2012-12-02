@@ -18,9 +18,9 @@ import bpnn.utils._
 import neuronunits._
 
 class InputLayer (
-	private val confPath:String, 
+	confPath:String, 
 	layerName:String, sEnv:SparkEnv) 
-	extends NeuronLayer(layerName, sEnv) {
+	extends NeuronLayer(confPath, layerName, sEnv) {
 	
 	private val units = new HashMap[String, InputNeuronUnit]()
 
@@ -61,9 +61,8 @@ class InputLayer (
 	override def init() {
 		//parse XML configuration file to get the number of nodes in each layer
 		SparkEnv.set(sparkEnv)
-		LayerConf.loadConfiguration(confPath)
-		val numInputSplits:Int = LayerConf.getInt("OutputLayer.numInputSplits", 1)
-		numNeurons = LayerConf.getInt("InputLayer.unitNum", 1)
+		val numInputSplits:Int = conf.getInt("OutputLayer.numInputSplits", 1)
+		numNeurons = conf.getInt("InputLayer.unitNum", 1)
 		println("InputLayer starts " + numNeurons + " units")
 		//start numNeurons units
 		for (i <- 1 to numNeurons) {
@@ -71,14 +70,14 @@ class InputLayer (
 			units.put(unitName, 
 				new InputNeuronUnit(i, 
 					numInputSplits,
-					LayerConf.getString("InputLayer.inputPath." + unitName, null)))
+					conf.getString("InputLayer.inputPath." + unitName, null)))
 			units.get(unitName).get.init
 			nextLayer ! RegisterInputUnitMsg(units.get(unitName).get.toString)
 		}
 
 		//add bias unit
 		//units.put(biasUnit.toString, biasUnit)
-		biasUnit = new BiasNeuronUnit(nextLayer)
+		biasUnit = new BiasNeuronUnit(bpNeuronNetworksSetup.numInstance, nextLayer)
 		biasUnit.init
 	}
 }

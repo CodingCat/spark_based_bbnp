@@ -6,24 +6,26 @@ import bpnn.utils._
 
 object bpNeuronNetworksSetup {
 	var sc:SparkContext = null	
-	
+	private val conf:LayerConf = new LayerConf("global-conf.xml")
+
 	def init() {
 		if (sc == null) {
-			LayerConf.loadConfiguration("global-conf.xml")
-			if (LayerConf.getString("global.Env.runningMode", "local") == "local") {
+			if (conf.getString("global.Env.runningMode", "local") == "local") {
 				sc = new SparkContext(
-					LayerConf.getString("global.Env.MasterURI", "local[1]"),
+					conf.getString("global.Env.MasterURI", "local[1]"),
 				 		"Spark-Based-BackPropogation-Neural-Networks")			
 			}
 			else {
-				if (LayerConf.getString("global.Env.runningMode", "local") == "cluster") {
+				if (conf.getString("global.Env.runningMode", "local") == "cluster") {
 					sc = new SparkContext(
-						LayerConf.getString("global.Env.MasterURI", "spark://localhost:7070"),
+						conf.getString("global.Env.MasterURI", "spark://localhost:7070"),
 		 			 	"Spark-Based-BackPropogation-Neural-Networks", 
-		 				LayerConf.getString("global.Env.SparkPath", "local"),
-		 				LayerConf.getStringSeq("global.Env.JarURI", "local", 1))		
+		 				conf.getString("global.Env.SparkPath", "local"),
+		 				conf.getStringSeq("global.Env.JarURI", "local", 1))		
 				}
 			}
 		}
 	}
+
+	def numInstance:Int = conf.getInt("global.TrainingSet.Num", 200);
 }

@@ -12,7 +12,6 @@ object bpNeuronNetworks {
 		
 		bpNeuronNetworksSetup.init
 		
-
 		val inputUnits:InputLayer = new InputLayer("input-conf.xml", "InputLayer",
 			SparkEnv.get)
 		val hiddenUnits:HiddenLayer = new HiddenLayer("hidden-conf.xml", "HiddenLayer",
