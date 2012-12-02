@@ -4,11 +4,11 @@
 		<value>1</value>
 	</property>
 	<property>
-		<name>OutputLayer.numInputUnit.unit1</name>
-		<value>3</value>
-	</property>
-	<property>
 		<name>OutputLayer.inputPath.unit1</name>
 		<value>input_data_set/output_unit_1</value>
+	</property>
+	<property>
+		<name>OutputLayer.numInputSplit</name>
+		<value>3</value>
 	</property>
 </configuration>

@@ -15,34 +15,14 @@ import spark.SparkContext
 import bpnn._
 import bpnn.system.LayerCoordinator
 import bpnn.utils._
+import neuronunits._
 
-class InputLayer(confPath:String, layerName:String, sEnv:SparkEnv) 
-	extends NeuronLayer(confPath, layerName, sEnv) {
+class InputLayer (
+	private val confPath:String, 
+	layerName:String, sEnv:SparkEnv) 
+	extends NeuronLayer(layerName, sEnv) {
 	
-	val units = new HashMap[String, InputNeuronUnit]()
-	
-	class InputNeuronUnit(id:Int, inputSplit:Int, inputPath:String)
-		extends NeuronUnit[String, Float](id,inputSplit,inputPath) {
-		
-		override def init() {
-			//send out register messages
-			//1. get output unit list
-			val outStr = conf.getString("InputLayer.OutDst." + this.toString, "unit1")
-			//2. Converst outList to list
-			val outList = outStr.split(',')
-			for (i <- 1 to outList.length) 
-				nextLayer ! RegisterInputUnitMsg(this.toString, "unit" + i)
-		}
-
-		override def run() {
-			SparkEnv.set(sparkEnv)
-			outputRDD = bpNeuronNetworksSetup.sc.
-				textFile(inputPath, numInputSplit).map[Float](_.toFloat).cache()
-			println(outputRDD.count)
-			nextLayer ! InputUnitReadyMessage(this.toString, outputRDD) 
-		}
-
-	}
+	private val units = new HashMap[String, InputNeuronUnit]()
 
 	def act() {
 		loop {
@@ -61,30 +41,39 @@ class InputLayer(confPath:String, layerName:String, sEnv:SparkEnv)
 
 	
 	override def runUnits() {
+		SparkEnv.set(sparkEnv)
 		units.foreach(
 			t2 => 
 			{
 				println(t2._2 + " is running")
-				t2._2.run()
+				if (t2._2.run() == true) {
+					println(t2._2.toString + " is sending InputUnitReadyMessage")
+					nextLayer ! InputUnitReadyMessage(t2._2.toString, t2._2.getOutput)
+				}
 			}
 		) 
-		biasUnit.run
+		if (biasUnit.run == true) {
+			nextLayer ! InputUnitReadyMessage(biasUnit.toString, biasUnit.getOutput) 
+		}
 	}
 
 	//initialize the input layer
 	override def init() {
 		//parse XML configuration file to get the number of nodes in each layer
 		SparkEnv.set(sparkEnv)
-		numNeurons = conf.getInt("InputLayer.unitNum", 1)
+		LayerConf.loadConfiguration(confPath)
+		val numInputSplits:Int = LayerConf.getInt("OutputLayer.numInputSplits", 1)
+		numNeurons = LayerConf.getInt("InputLayer.unitNum", 1)
 		println("InputLayer starts " + numNeurons + " units")
 		//start numNeurons units
 		for (i <- 1 to numNeurons) {
 			val unitName:String = "unit" + i
 			units.put(unitName, 
 				new InputNeuronUnit(i, 
-					conf.getInt("InputLayer.numInputSplit." + unitName, 1),
-					conf.getString("InputLayer.inputPath." + unitName, null)))
+					numInputSplits,
+					LayerConf.getString("InputLayer.inputPath." + unitName, null)))
 			units.get(unitName).get.init
+			nextLayer ! RegisterInputUnitMsg(units.get(unitName).get.toString)
 		}
 
 		//add bias unit

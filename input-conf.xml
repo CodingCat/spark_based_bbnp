@@ -12,15 +12,7 @@
 		<value>input_data_set/input_unit_2</value>
 	</property>
 	<property>
-		<name>InputLayer.OutDst.unit1</name>
-		<value>1,2</value>
-	</property>
-	<property>
-		<name>InputLayer.OutDst.unit2</name>
-		<value>1,2</value>
-	</property>
-	<property>
-		<name>InputLayer.numTrainingInstance</name>
-		<value>200</value>
+		<name>InputLayer.numInputSplit</name>
+		<value>3</value>
 	</property>
 </configuration>

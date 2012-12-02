@@ -6,16 +6,16 @@ import spark.RDD
 import spark.SparkContext
 import spark.Split
 
-private class ZippedSplit[T: ClassManifest, U: ClassManifest](
+private class ZippedSplit[InputRDDType](
     idx: Int, 
-    rdd1: RDD[T],
-    rdd2: RDD[U],
+    rdd1: RDD[InputRDDType],
+    rdd2: RDD[InputRDDType],
     split1: Split,
     split2: Split)
   extends Split
   with Serializable {
   
-  def iterator(): Iterator[(T, U)] = {
+  def iterator(): Iterator[(InputRDDType, InputRDDType)] = {
     rdd1.iterator(split1).zip(rdd2.iterator(split2))
   }
 
@@ -25,11 +25,11 @@ private class ZippedSplit[T: ClassManifest, U: ClassManifest](
   override val index: Int = idx
 }
 
-class ZippedRDD[T: ClassManifest, U: ClassManifest](
+class ZippedRDD[InputRDDType](
     sc: SparkContext,
-    @transient rdd1: RDD[T],
-    @transient rdd2: RDD[U])
-  extends RDD[(T, U)](sc)
+    @transient rdd1: RDD[InputRDDType],
+    @transient rdd2: RDD[InputRDDType])
+  extends RDD[(InputRDDType, InputRDDType)](sc)
   with Serializable {
 
   @transient
@@ -53,8 +53,9 @@ class ZippedRDD[T: ClassManifest, U: ClassManifest](
   @transient
   override val dependencies = List(new OneToOneDependency(rdd1), new OneToOneDependency(rdd2))
   
-  override def compute(s: Split): Iterator[(T, U)] = s.asInstanceOf[ZippedSplit[T, U]].iterator()
+  override def compute(s: Split): Iterator[(InputRDDType, InputRDDType)] = 
+    s.asInstanceOf[ZippedSplit[InputRDDType]].iterator()
 
   override def preferredLocations(s: Split): Seq[String] =
-    s.asInstanceOf[ZippedSplit[T, U]].preferredLocations()
+    s.asInstanceOf[ZippedSplit[InputRDDType]].preferredLocations()
 }

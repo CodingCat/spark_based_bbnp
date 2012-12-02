@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"InPU",
+				"InputUnitReadyMessage"
+			],
+			[
+				"prev",
+				"prevLayerSize"
+			],
+			[
+				"pr",
+				"prevLayerSize"
+			],
+			[
+				"register",
+				"registerInputUnits"
+			],
+			[
+				"ut",
+				"units"
+			],
+			[
+				"conf",
+				"confPath"
+			],
+			[
+				"RDD",
+				"RDDFloatCalculator"
+			],
+			[
+				"RD",
+				"RDDList"
+			],
+			[
+				"T",
+				"T"
+			],
+			[
 				"outp",
 				"outputRDD"
 			],
@@ -154,10 +190,6 @@
 			[
 				"bp",
 				"bpNeuronNetworksSetup"
-			],
-			[
-				"conf",
-				"confPath"
 			],
 			[
 				"sp",
@@ -372,18 +404,18 @@
 	"buffers":
 	[
 		{
-			"file": "src/main/scala/neurons/NeuronUnit.scala",
+			"file": "src/main/scala/neurons/InputLayer.scala",
 			"settings":
 			{
-				"buffer_size": 1597,
+				"buffer_size": 2047,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main/scala/system/LayerCoordinator.scala",
+			"file": "src/main/scala/neurons/HiddenLayer.scala",
 			"settings":
 			{
-				"buffer_size": 829,
+				"buffer_size": 2309,
 				"line_ending": "Unix"
 			}
 		},
@@ -391,39 +423,55 @@
 			"file": "src/main/scala/neurons/OutputLayer.scala",
 			"settings":
 			{
-				"buffer_size": 3819,
+				"buffer_size": 1925,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main/scala/neurons/InputLayer.scala",
+			"file": "hidden-conf.xml",
 			"settings":
 			{
-				"buffer_size": 2308,
+				"buffer_size": 196,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main/scala/main.scala",
+			"file": "input-conf.xml",
 			"settings":
 			{
-				"buffer_size": 934,
+				"buffer_size": 418,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main/scala/utils/ZippedRDD.scala",
+			"file": "output-conf.xml",
 			"settings":
 			{
-				"buffer_size": 1640,
+				"buffer_size": 310,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/main/scala/utils/RDDCalculator.scala",
+			"file": "src/main/scala/neurons/neuronunits/NeuronUnit.scala",
 			"settings":
 			{
-				"buffer_size": 206,
+				"buffer_size": 1727,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/neurons/neuronunits/OutputNeuronUnit.scala",
+			"settings":
+			{
+				"buffer_size": 1624,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/neurons/neuronunits/HiddenNeuronUnit.scala",
+			"settings":
+			{
+				"buffer_size": 1044,
 				"line_ending": "Unix"
 			}
 		}
@@ -484,22 +532,33 @@
 	},
 	"file_history":
 	[
-		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/utils/LayerConf.scala",
-		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/utils/ZippedRDD.scala",
-		"/Users/zhunan/codes/spark_based_bbnp/global-conf.xml",
-		"/Users/zhunan/codes/spark_based_bbnp/output-conf.xml",
-		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/BiasNeuronUnit.scala",
-		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/main.scala",
-		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/InputLayer.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/neuronunits/InputNeuronUnit.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/neuronunits/BiasNeuronUnit.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/neuronunits/NeuronUnit.scala",
 		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/MsgClasses.scala",
-		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/HiddenLayer.scala",
-		"/Users/zhunan/codes/spark_based_bbnp/hidden-conf.xml",
-		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/NeuronLayer.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/neuronunits/HiddenNeuronUnit.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/output-conf.xml",
 		"/Users/zhunan/codes/spark_based_bbnp/input-conf.xml",
-		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/NeuronUnit.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/hidden-conf.xml",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/InputLayer.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/HiddenLayer.scala",
 		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/OutputLayer.scala",
-		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/system/Coordinator.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/neuronunits/OutputNeuronUnit.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/NeuronLayer.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/utils/RDDFloatCalculator.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/units/HiddenNeuronUnit.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/global-conf.xml",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/units/InputNeuronUnit.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/utils/LayerConf.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/units/OutputNeuronUnit.scala",
 		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/bpNeuronNetworksSetup.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/NeuronUnit.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/units/BiasNeuronUnit.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/BiasNeuronUnit.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/system/LayerCoordinator.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/main.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/utils/ZippedRDD.scala",
+		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/system/Coordinator.scala",
 		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/system/coordinator.scala",
 		"/Users/zhunan/codes/spark_based_bbnp/src/main/scala/neurons/NeuronsLayer.scala",
 		"/Users/zhunan/codes/spark_based_bbnp/build.sbt",
@@ -600,18 +659,7 @@
 		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ChordFingerTable.cc",
 		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ChordNode.h",
 		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/DataQueryServer.cc",
-		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ThriftCallees/NodeInfo_types.cpp",
-		"/Users/zhunan/ScalableMapReduce/scalableMR/src/Utils/Configuration.cc",
-		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Base/NodeInfo.h",
-		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ThriftCallees/ChordNodeRpcCallees.h",
-		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Chord/ThriftCallees/ChordNodeRpcCallees_server.skeleton.cpp",
-		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/Utils/Configuration.h",
-		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Makefile",
-		"/Users/zhunan/ScalableMapReduce/scalableMR/src/Utils/Makefile",
-		"/Users/zhunan/ScalableMapReduce/scalableMR/src/include/DataQueryLayer/Base/HashTableEntry.h",
-		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ThriftCallees/ChordNodeRpcCallees_server.skeleton.cpp",
-		"/Users/zhunan/codes/CosmosSIM/script/artificial_c4.ini",
-		"/users/zhunan/codes/CosmosSIM/script/artificial_trace.txt"
+		"/Users/zhunan/ScalableMapReduce/scalableMR/src/DataQueryLayer/Chord/ThriftCallees/NodeInfo_types.cpp"
 	],
 	"find":
 	{
@@ -629,6 +677,16 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			":",
+			"globalConf",
+			"conf",
+			"RDDType",
+			", Float",
+			"U",
+			"T",
+			"      ",
+			"          ",
+			"T",
 			"outputRDD",
 			"transformInputRDD",
 			"inputRDDList",
@@ -670,50 +728,23 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 8,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/main/scala/neurons/NeuronUnit.scala",
+					"file": "src/main/scala/neurons/InputLayer.scala",
 					"settings":
 					{
-						"buffer_size": 1597,
+						"buffer_size": 2047,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								367,
-								367
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Scala/Scala.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 117.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/main/scala/system/LayerCoordinator.scala",
-					"settings":
-					{
-						"buffer_size": 829,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								784,
-								784
+								1628,
+								1629
 							]
 						],
 						"settings":
@@ -728,19 +759,46 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/main/scala/neurons/OutputLayer.scala",
+					"buffer": 1,
+					"file": "src/main/scala/neurons/HiddenLayer.scala",
 					"settings":
 					{
-						"buffer_size": 3819,
+						"buffer_size": 2309,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1616,
-								1616
+								1998,
+								1998
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 6.0,
+						"translation.y": 1007.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/main/scala/neurons/OutputLayer.scala",
+					"settings":
+					{
+						"buffer_size": 1925,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1758,
+								1758
 							]
 						],
 						"settings":
@@ -749,25 +807,104 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 480.0,
+						"translation.y": 97.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "src/main/scala/neurons/InputLayer.scala",
+					"file": "hidden-conf.xml",
 					"settings":
 					{
-						"buffer_size": 2308,
+						"buffer_size": 196,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								920,
-								920
+								179,
+								96
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "input-conf.xml",
+					"settings":
+					{
+						"buffer_size": 418,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								343,
+								343
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "output-conf.xml",
+					"settings":
+					{
+						"buffer_size": 310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								293,
+								209
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/main/scala/neurons/neuronunits/NeuronUnit.scala",
+					"settings":
+					{
+						"buffer_size": 1727,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								644,
+								644
 							]
 						],
 						"settings":
@@ -776,17 +913,44 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 164.0,
+						"translation.y": 300.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/main/scala/main.scala",
+					"buffer": 7,
+					"file": "src/main/scala/neurons/neuronunits/OutputNeuronUnit.scala",
 					"settings":
 					{
-						"buffer_size": 934,
+						"buffer_size": 1624,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								471,
+								471
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 66.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/main/scala/neurons/neuronunits/HiddenNeuronUnit.scala",
+					"settings":
+					{
+						"buffer_size": 1044,
 						"regions":
 						{
 						},
@@ -801,62 +965,6 @@
 						{
 							"syntax": "Packages/Scala/Scala.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/main/scala/utils/ZippedRDD.scala",
-					"settings":
-					{
-						"buffer_size": 1640,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								1640
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Scala/Scala.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 468.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/main/scala/utils/RDDCalculator.scala",
-					"settings":
-					{
-						"buffer_size": 206,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								204,
-								204
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Scala/Scala.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

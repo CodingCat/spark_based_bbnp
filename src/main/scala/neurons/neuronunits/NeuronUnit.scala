@@ -1,36 +1,41 @@
-package bpnn.neurons
+package bpnn.neurons.neuronunits
 
 import scala.actors.Actor
 import scala.collection.mutable.HashMap
 import scala.util.Random
 
 import spark.RDD
+import spark.SparkEnv
 import spark.SparkContext
 
 import bpnn._
 import bpnn.utils._
+import bpnn.neurons._
 import bpnn.system._
 
+@SerialVersionUID(10L)
 abstract class NeuronUnit[InputType, OutputType](
 	protected var neuronId:Int,
 	protected var numInputSplit:Int,
+	//protected val sparkEnv:SparkEnv,
 	private var inputPath:String = null
-	) {
+	) extends Serializable{
+
 		protected var inputRDDList:HashMap[String, RDD[InputType]] = 
 			new HashMap[String, RDD[InputType]];
 		protected var outputRDD:RDD[OutputType] = null
-		protected var numInputUnit = 0
+		protected var numInputUnit = 3
 		protected var inputWeights:HashMap[String, Float] = new HashMap[String, Float]
 		protected var inputReadyFlags:HashMap[String, Int] = new HashMap[String, Int]
-		protected val RandomGen = new Random()
-		protected val numTrainingInstance:Int = bpNeuronNetworksSetup.globalConf.
-			getInt("global.TrainingSet.Num", 100)
+		//protected val RandomGen = new Random()
+		/*protected val numTrainingInstance:Int = bpNeuronNetworksSetup.globalConf.
+			getInt("global.TrainingSet.Num", 100)*/
 
 		def init(){
 
 		}
 
-		def run()
+		def run():Boolean
 
 		def AllInputReady():Boolean = {
 			var cnt:Int = 0;
@@ -47,12 +52,13 @@ abstract class NeuronUnit[InputType, OutputType](
 		}
 
 		def registerInputUnits(unitName:String) {
-			inputWeights.put(unitName, RandomGen.nextFloat())
+			inputWeights.put(unitName, 0.01f)
 			inputReadyFlags.put(unitName, 0)
 		}
 
 		def hasThisInputUnit(candidate:String):Boolean = inputWeights.contains(candidate)
 
+		def getOutput = outputRDD
 		
 		//def transformInputRDD(key:String, readyRDD:RDD[Any])
 
