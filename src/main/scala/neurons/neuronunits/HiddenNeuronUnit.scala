@@ -15,8 +15,9 @@ import bpnn.utils._
 @SerialVersionUID(40L)
 class HiddenNeuronUnit(
 		id:Int, 
-		inputSplit:Int)
-		extends NeuronUnit[Float, Float](id, inputSplit) with Serializable {
+		inputSplit:Int,
+		inputUnits:Int)
+		extends NeuronUnit[Float, Float](id, inputSplit, inputUnits) with Serializable {
 	
 	override def run():Boolean = {
 		//implement the activation function here

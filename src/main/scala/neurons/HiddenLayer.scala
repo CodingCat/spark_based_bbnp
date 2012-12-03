@@ -64,6 +64,7 @@ class HiddenLayer(
 	override def init() {
 		//parse XML configuration file to get the number of nodes in each layer
 		val numInputSplits:Int = conf.getInt("HiddenLayer.numInputSplits", 1)
+		val numInputUnits:Int  = conf.getInt("HiddenLayer.numInputUnits", 1)
 		numNeurons = conf.getInt("HiddenLayer.unitNum", 1)
 		println("Hidden Layer starts " + numNeurons + " units")
 		//start numNeurons units
@@ -71,7 +72,8 @@ class HiddenLayer(
 			val unitName:String = "unit" + i
 			units.put(unitName, 
 				new HiddenNeuronUnit(i, 
-					numInputSplits))
+					numInputSplits, 
+					numInputUnits))
 			units.get(unitName).get.init()
 			nextLayer ! RegisterInputUnitMsg(units.get(unitName).get.toString)
 		}

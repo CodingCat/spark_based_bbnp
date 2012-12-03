@@ -8,7 +8,11 @@
 		<value>input_data_set/output_unit_1</value>
 	</property>
 	<property>
-		<name>OutputLayer.numInputSplit</name>
+		<name>OutputLayer.numInputSplits</name>
+		<value>3</value>
+	</property>
+	<property>
+		<name>OutputLayer.numInputUnits</name>
 		<value>3</value>
 	</property>
 </configuration>

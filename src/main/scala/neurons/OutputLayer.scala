@@ -53,6 +53,7 @@ class OutputLayer(
 	override def init() {
 		//parse XML configuration file to get the number of nodes in each layer
 		val numInputSplits:Int = conf.getInt("OutputLayer.numInputSplits", 1)
+		val numInputUnits:Int  = conf.getInt("OutputLayer.numInputUnits", 1)
 		SparkEnv.set(sparkEnv)
 		numNeurons = conf.getInt("OutputLayer.unitNum", 1)
 		println("OutputLayer starts " + numNeurons + " units")
@@ -62,6 +63,7 @@ class OutputLayer(
 			units.put(unitName, 
 				new OutputNeuronUnit(i, 
 					numInputSplits,
+					numInputUnits,
 					conf.getString("OutputLayer.inputPath." + unitName, null)))
 			units.get(unitName).get.init
 		}

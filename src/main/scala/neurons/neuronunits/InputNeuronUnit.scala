@@ -17,7 +17,7 @@ class InputNeuronUnit(
 		id:Int, 
 		inputSplit:Int,
 		inputPath:String)
-		extends NeuronUnit[String, Float](id, inputSplit, inputPath) 
+		extends NeuronUnit[String, Float](id, inputSplit, 0, inputPath) 
 		with Serializable{
 
 	override def run():Boolean = {

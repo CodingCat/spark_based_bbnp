@@ -15,9 +15,10 @@ import bpnn.utils._
 @SerialVersionUID(20L)
 class OutputNeuronUnit(
 		id:Int, 
-		inputSplit:Int,
+		inputSplits:Int,
+		inputUnits:Int, 
 		inputPath:String)
-		extends NeuronUnit[Float, Float](id, inputSplit, inputPath) 
+		extends NeuronUnit[Float, Float](id, inputSplits, inputUnits, inputPath) 
 		with Serializable {
 	private var labelRDD:RDD[Float] = null
 

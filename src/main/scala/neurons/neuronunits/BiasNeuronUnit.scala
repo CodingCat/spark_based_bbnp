@@ -14,7 +14,7 @@ import bpnn.neurons._
 class BiasNeuronUnit(
 	private val numInstance:Int, 
 	private val nextLayer:NeuronLayer)
-		extends NeuronUnit[String, Float](0, 1) with Serializable{
+		extends NeuronUnit[String, Float](0, 1, 0) with Serializable{
 
 	override def init() {
 		nextLayer ! RegisterInputUnitMsg(this.toString)

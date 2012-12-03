@@ -17,14 +17,13 @@ import bpnn.system._
 abstract class NeuronUnit[InputType, OutputType](
 	protected var neuronId:Int,
 	protected var numInputSplit:Int,
-	//protected val sparkEnv:SparkEnv,
+	protected val numInputUnit:Int, 
 	private var inputPath:String = null
 	) extends Serializable{
 
 		protected var inputRDDList:HashMap[String, RDD[InputType]] = 
 			new HashMap[String, RDD[InputType]];
 		protected var outputRDD:RDD[OutputType] = null
-		protected var numInputUnit = 3
 		protected var inputWeights:HashMap[String, Float] = new HashMap[String, Float]
 		protected var inputReadyFlags:HashMap[String, Int] = new HashMap[String, Int]
 		//protected val RandomGen = new Random()
