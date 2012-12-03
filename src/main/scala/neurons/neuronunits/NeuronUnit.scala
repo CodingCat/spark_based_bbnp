@@ -19,7 +19,7 @@ abstract class NeuronUnit[InputType, OutputType](
 	protected var numInputSplit:Int,
 	protected val numInputUnit:Int, 
 	private var inputPath:String = null
-	) extends Serializable{
+	) extends Serializable with Logging {
 
 		protected var inputRDDList:HashMap[String, RDD[InputType]] = 
 			new HashMap[String, RDD[InputType]];

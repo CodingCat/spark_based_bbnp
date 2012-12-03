@@ -1,0 +1,50 @@
+[0m[[0minfo[0m] [0mLoading global plugins from /Users/zhunan/.sbt/plugins[0m
+[0m[[0minfo[0m] [0mSet current project to spark-bpnn (in build file:/Users/zhunan/codes/spark_based_bbnp/)[0m
+[0m[[0minfo[0m] [0mRunning bpnn.bpNeuronNetworks [0m
+OutputLayer starts 1 units
+Hidden Layer starts 2 units
+InputLayer starts 2 units
+biasUnitForOutputLayer  is ready for unit1
+start run
+unit2 is running
+1:3
+unit2 is sending InputUnitReadyMessage
+unit1 is running
+unit2  is ready for unit2
+unit2
+0.01
+1:3
+unit2  is ready for unit1
+unit2
+0.01
+1:3
+unit1 is sending InputUnitReadyMessage
+unit1  is ready for unit2
+unit1
+0.01
+2:3
+unit1  is ready for unit1
+unit1
+0.01
+2:3
+biasUnitForHiddenLayer  is ready for unit2
+biasUnitForHiddenLayer
+0.01
+3:3
+here
+here
+200
+biasUnitForHiddenLayer  is ready for unit1
+biasUnitForHiddenLayer
+0.01
+unit2  is ready for unit1
+3:3
+here
+2:3
+here
+200
+unit1  is ready for unit1
+3:3
+final result run
+here
+here

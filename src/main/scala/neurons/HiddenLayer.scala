@@ -18,7 +18,7 @@ class HiddenLayer(
 	confPath:String, 
 	layerName:String, 
 	sEnv:SparkEnv) 
-	extends NeuronLayer(confPath:String, layerName:String, sEnv) {
+	extends NeuronLayer(confPath:String, layerName:String, sEnv) with Logging {
 	
 	private val units = new HashMap[String, HiddenNeuronUnit]()
 	

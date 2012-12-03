@@ -17,7 +17,8 @@ class HiddenNeuronUnit(
 		id:Int, 
 		inputSplit:Int,
 		inputUnits:Int)
-		extends NeuronUnit[Float, Float](id, inputSplit, inputUnits) with Serializable {
+		extends NeuronUnit[Float, Float](id, inputSplit, inputUnits) 
+		with Serializable with Logging {
 	
 	override def run():Boolean = {
 		//implement the activation function here

@@ -18,7 +18,8 @@ class InputNeuronUnit(
 		inputSplit:Int,
 		inputPath:String)
 		extends NeuronUnit[String, Float](id, inputSplit, 0, inputPath) 
-		with Serializable{
+		with Serializable
+		with Logging {
 
 	override def run():Boolean = {
 		outputRDD = bpNeuronNetworksSetup.sc.

@@ -13,7 +13,7 @@ import neuronunits._
 
 class OutputLayer(
 	confPath:String, layerName:String, sEnv:SparkEnv) 
-	extends NeuronLayer(confPath, layerName, sEnv) {
+	extends NeuronLayer(confPath, layerName, sEnv) with Logging {
 	
 	private val units = new HashMap[String, OutputNeuronUnit]()
 	

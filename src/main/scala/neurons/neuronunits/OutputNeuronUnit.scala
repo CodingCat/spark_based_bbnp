@@ -19,7 +19,8 @@ class OutputNeuronUnit(
 		inputUnits:Int, 
 		inputPath:String)
 		extends NeuronUnit[Float, Float](id, inputSplits, inputUnits, inputPath) 
-		with Serializable {
+		with Serializable with Logging {
+			
 	private var labelRDD:RDD[Float] = null
 
 	override def init() {
