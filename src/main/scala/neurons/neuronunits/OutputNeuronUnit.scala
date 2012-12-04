@@ -12,7 +12,6 @@ import bpnn._
 import bpnn.neurons._
 import bpnn.utils._
 
-@SerialVersionUID(20L)
 class OutputNeuronUnit(
 		id:Int, 
 		inputSplits:Int,

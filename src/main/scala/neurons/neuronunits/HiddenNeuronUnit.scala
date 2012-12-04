@@ -12,7 +12,6 @@ import bpnn._
 import bpnn.neurons._
 import bpnn.utils._
 
-@SerialVersionUID(40L)
 class HiddenNeuronUnit(
 		id:Int, 
 		inputSplit:Int,

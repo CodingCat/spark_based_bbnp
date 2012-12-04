@@ -10,7 +10,6 @@ import bpnn._
 import bpnn.utils._
 import bpnn.neurons._
 
-@SerialVersionUID(50L)
 class BiasNeuronUnit(
 	private val numInstance:Int, 
 	private val nextLayer:NeuronLayer)

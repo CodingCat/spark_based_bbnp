@@ -13,7 +13,6 @@ import bpnn.utils._
 import bpnn.neurons._
 import bpnn.system._
 
-@SerialVersionUID(10L)
 abstract class NeuronUnit[InputType, OutputType](
 	protected var neuronId:Int,
 	protected var numInputSplit:Int,
