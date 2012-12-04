@@ -27,8 +27,8 @@ private class ZippedSplit[InputRDDType](
 
 class ZippedRDD[InputRDDType](
     sc: SparkContext,
-    @transient rdd1: RDD[InputRDDType],
-    @transient rdd2: RDD[InputRDDType])
+    @transient private val rdd1: RDD[InputRDDType],
+    @transient private val rdd2: RDD[InputRDDType])
   extends RDD[(InputRDDType, InputRDDType)](sc)
   with Serializable {
 
@@ -58,4 +58,7 @@ class ZippedRDD[InputRDDType](
 
   override def preferredLocations(s: Split): Seq[String] =
     s.asInstanceOf[ZippedSplit[InputRDDType]].preferredLocations()
+
+  def getRDD1:RDD[InputRDDType] = rdd1;
+  def getRDD2:RDD[InputRDDType] = rdd2;
 }

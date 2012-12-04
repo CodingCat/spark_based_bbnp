@@ -4,6 +4,8 @@ import scala.actors.Actor
 import scala.collection.mutable.HashMap
 import scala.util.Random
 
+import java.lang.System
+
 import spark.RDD
 import spark.SparkEnv
 import spark.SparkContext
@@ -48,7 +50,9 @@ abstract class NeuronUnit[InputType, OutputType](
 		}
 
 		def registerInputUnits(unitName:String) {
-			inputWeights.put(unitName, 0.01f)
+			val w = new Random().nextFloat()
+			logInfo("generate new weight:" + w)
+			inputWeights.put(unitName, w)
 			inputReadyFlags.put(unitName, 0)
 		}
 

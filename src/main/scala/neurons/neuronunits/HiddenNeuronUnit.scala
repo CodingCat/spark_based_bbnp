@@ -32,8 +32,6 @@ class HiddenNeuronUnit(
 
 
 	def transformInputRDD(key:String, readyRDD:RDD[Float]) {
-		println(key)
-		println(inputWeights.get(key).get)
 		if (readyRDD == null) println("bad")
 		inputRDDList.put(key, readyRDD.map(inputEle => inputEle * 
 						inputWeights.get(key).get))
