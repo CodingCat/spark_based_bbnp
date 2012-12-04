@@ -22,14 +22,12 @@ abstract class NeuronUnit[InputType, OutputType](
 	) extends Serializable with Logging {
 
 		protected var inputRDDList:HashMap[String, RDD[InputType]] = 
-			new HashMap[String, RDD[InputType]];
+			new HashMap[String, RDD[InputType]]
 		protected var outputRDD:RDD[OutputType] = null
 		protected var inputWeights:HashMap[String, Float] = new HashMap[String, Float]
 		protected var inputReadyFlags:HashMap[String, Int] = new HashMap[String, Int]
-		//protected val RandomGen = new Random()
-		/*protected val numTrainingInstance:Int = bpNeuronNetworksSetup.globalConf.
-			getInt("global.TrainingSet.Num", 100)*/
-
+		
+		
 		def init(){
 
 		}
@@ -59,7 +57,5 @@ abstract class NeuronUnit[InputType, OutputType](
 
 		def getOutput = outputRDD
 		
-		//def transformInputRDD(key:String, readyRDD:RDD[Any])
-
 		override def toString = "unit" + neuronId
 }

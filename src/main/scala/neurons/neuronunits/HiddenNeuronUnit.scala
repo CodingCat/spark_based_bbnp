@@ -24,9 +24,8 @@ class HiddenNeuronUnit(
 		//implement the activation function here
 		//take into all input dataset into consideration
 		//Description of the algorithm here:
-		RDDFloatCalculator.setRDDList(inputRDDList)
-		outputRDD = RDDFloatCalculator.sigmoid()
-		println(outputRDD.count)
+		RDDFloatCalculator.setRDDList(inputRDDList.values.toArray)
+		outputRDD = RDDFloatCalculator.rddSigmoid()
 		resetReadyFlags()
 		true
 	}
@@ -39,7 +38,6 @@ class HiddenNeuronUnit(
 		if (readyRDD == null) println("bad")
 		inputRDDList.put(key, readyRDD.map(inputEle => inputEle * 
 						inputWeights.get(key).get))
-		//println(readyRDD.count)
 	}
 
 }

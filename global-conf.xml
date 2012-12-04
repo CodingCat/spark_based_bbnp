@@ -19,4 +19,8 @@
 		<name>global.TrainingSet.Num</name>
 		<value>200</value>
 	</property>
+	<property>
+		<name>global.LearningStepLen</name>
+		<value>0.001</value>
+	</property>
 </configuration>

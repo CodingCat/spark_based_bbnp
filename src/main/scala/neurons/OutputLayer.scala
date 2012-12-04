@@ -16,7 +16,7 @@ class OutputLayer(
 	extends NeuronLayer(confPath, layerName, sEnv) with Logging {
 	
 	private val units = new HashMap[String, OutputNeuronUnit]()
-	
+	private var Error:Long = 0;
 	def act() {
 		loop {
 			react {
