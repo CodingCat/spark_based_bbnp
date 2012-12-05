@@ -32,14 +32,18 @@ class InputLayer (
 				case "init" =>
 					init()
 					LayerCoordinator ! LayerReadyMsg(this)
+				case DeriveListReadyMsg(outUnit:String, 
+					readyRDDMap:HashMap[String, RDD[Float]]) =>
+					readyRDDMap.foreach(t2 => 
+						//update the round number of each unit
+						units.get(t2._1).get.updateRoundNumber()
+					)
 				case "run" =>
-					println("start run")
 					runUnits()
 			}
 		}
 	}
 
-	
 	override def runUnits() {
 		SparkEnv.set(sparkEnv)
 		units.foreach(
@@ -63,7 +67,6 @@ class InputLayer (
 		SparkEnv.set(sparkEnv)
 		val numInputSplits:Int = conf.getInt("OutputLayer.numInputSplits", 1)
 		numNeurons = conf.getInt("InputLayer.unitNum", 1)
-		println("InputLayer starts " + numNeurons + " units")
 		//start numNeurons units
 		for (i <- 1 to numNeurons) {
 			val unitName:String = "unit" + i

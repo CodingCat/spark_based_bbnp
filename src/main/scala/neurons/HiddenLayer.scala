@@ -64,11 +64,15 @@ class HiddenLayer(
 								if (nextLayer.LayerSize == units.get(t2._1).get.CntReceiveDerive) {
 									units.get(t2._1).get.updateWeights()
 									cntUpdatedWeightsUnits = cntUpdatedWeightsUnits + 1
+									prevLayer ! DeriveListReadyMsg(t2._2.toString, 
+										units.get(t2._1).get.DeriveList)
 								}
 							}
 						}
 					)
-					if (RoundCompleted) LayerCoordinator ! RoundFinishMsg(this.toString)
+					if (RoundCompleted) {
+						LayerCoordinator ! RoundFinishMsg(this.toString)
+					}
 				case PrevLayerReadyMsg(readyLayer) =>
 					readyLayer ! "init"
 			}

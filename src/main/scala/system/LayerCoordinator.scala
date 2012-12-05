@@ -49,10 +49,10 @@ object LayerCoordinator extends Actor {
 				case RoundFinishMsg(readyLayer) => {
 					roundFinishFlags.put(readyLayer, 1)
 					if (CurrentRoundFinish == true) {
-						inputLayer ! "run"
 						//reset everything 
 						layerReadyFlags.foreach(t2 => layerReadyFlags.put(t2._1, 0))
 						roundFinishFlags.foreach(t2 => roundFinishFlags.put(t2._1, 0))
+						inputLayer ! "run"
 					}
 				}
 			}

@@ -75,6 +75,8 @@ class HiddenNeuronUnit(
 
 	def CntReceiveDerive:Int = cntReceiveOut
 
+	def DeriveList = derivativeList
+
 	def transformInputRDD(key:String, readyRDD:RDD[Float]) {
 		readyRDDList.put(key, readyRDD)
 		derivativeList.put(key, readyRDD)

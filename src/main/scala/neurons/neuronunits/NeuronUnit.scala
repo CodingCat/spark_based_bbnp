@@ -27,7 +27,7 @@ abstract class NeuronUnit[InputType, OutputType](
 		protected var outputRDD:RDD[OutputType] = null
 		protected var inputWeights:HashMap[String, Float] = new HashMap[String, Float]
 		protected var inputReadyFlags:HashMap[String, Int] = new HashMap[String, Int]
-		
+		protected var roundNumber:Int = 1;
 		
 		def init(){
 
@@ -35,10 +35,13 @@ abstract class NeuronUnit[InputType, OutputType](
 
 		def run():Boolean
 
+		def updateRoundNumber() {
+			roundNumber = roundNumber + 1
+		}
+
 		def AllInputReady():Boolean = {
 			var cnt:Int = 0;
 			inputReadyFlags.foreach((t2) => if (t2._2 == 1) cnt = cnt + 1)
-			println(cnt + ":" + numInputUnit)
 			cnt == numInputUnit  
 		}
 
@@ -49,9 +52,11 @@ abstract class NeuronUnit[InputType, OutputType](
 		}
 
 		def registerInputUnits(unitName:String) {
-			val w = new Random().nextFloat()
-			logInfo("generate new weight:" + w)
-			inputWeights.put(unitName, w)
+			if (roundNumber == 1) {
+				val w = new Random().nextFloat()
+				logInfo("generate new weight:" + w)
+				inputWeights.put(unitName, w)
+			}
 			inputReadyFlags.put(unitName, 0)
 		}
 
