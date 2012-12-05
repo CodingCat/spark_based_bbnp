@@ -22,7 +22,8 @@ class HiddenLayer(
 	extends NeuronLayer(confPath:String, layerName:String, sEnv) with Logging {
 	
 	private val units = new HashMap[String, HiddenNeuronUnit]()
-	
+	private var cntUpdatedWeightsUnits = 0
+
 	def act() {
 		loop {
 			react {
@@ -60,16 +61,26 @@ class HiddenLayer(
 					readyRDDMap.foreach(t2 => {
 							if (t2._1.substring(0, 4) != "bias") {
 								units.get(t2._1).get.receiveDerive(outUnit, t2._2)
-								if (prevLayer.LayerSize == units.get(t2._1).get.CntReceiveDerive) {
+								if (nextLayer.LayerSize == units.get(t2._1).get.CntReceiveDerive) {
 									units.get(t2._1).get.updateWeights()
+									cntUpdatedWeightsUnits = cntUpdatedWeightsUnits + 1
 								}
 							}
 						}
 					)
+					if (RoundCompleted) LayerCoordinator ! RoundFinishMsg(this.toString)
 				case PrevLayerReadyMsg(readyLayer) =>
 					readyLayer ! "init"
 			}
 		}
+	}
+
+	private def RoundCompleted():Boolean = {
+		units.foreach(t2 => {
+				if (t2._2.CntReceiveDerive != nextLayer.LayerSize) return false
+			}
+		)
+		true
 	}
 	
 	override def init() {

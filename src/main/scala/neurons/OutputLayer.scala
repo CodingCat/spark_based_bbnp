@@ -42,6 +42,8 @@ class OutputLayer(
 									//send the derivative list to prev layer
 									prevLayer ! DeriveListReadyMsg(t2._2.toString, 
 										t2._2.DeriveList)
+									//send RoundFinishMsg to Coordinator
+									LayerCoordinator ! RoundFinishMsg(this.toString)
 								}
 							}
 						}
