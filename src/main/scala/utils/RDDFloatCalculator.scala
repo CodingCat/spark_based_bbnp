@@ -20,7 +20,7 @@ object RDDFloatCalculator extends Serializable{
     RDDList = a;
   }
 
-  private def additiveMergeRDDArray():RDD[Float] = {
+  def additiveMerge():RDD[Float] = {
     //merge the input RDDs one by one with zippedRDD
     var mergedRDD:RDD[Float] = null
     for (i <- 0 to RDDList.length - 2) {
@@ -38,6 +38,6 @@ object RDDFloatCalculator extends Serializable{
   }
   
   def rddSigmoid():RDD[Float] = {
-    additiveMergeRDDArray().map[Float](t => (1/(1 + math.exp(t.toDouble))).toFloat)
+    additiveMerge().map[Float](t => (1/(1 + math.exp(t.toDouble))).toFloat)
   }    
 }

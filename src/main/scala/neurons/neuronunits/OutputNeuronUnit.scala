@@ -22,7 +22,7 @@ class OutputNeuronUnit(
 		with Serializable with Logging {
 			
 	private var labelRDD:RDD[Float] = null
-	private var derivativeList:HashMap[String, RDD[Float]] = new HashMap[String, RDD[Float]]
+	private val derivativeList:HashMap[String, RDD[Float]] = new HashMap[String, RDD[Float]]
 	private var readyRDDList:HashMap[String, RDD[Float]] = new HashMap[String, RDD[Float]]
 
 	
@@ -50,18 +50,20 @@ class OutputNeuronUnit(
 			{
 				val proNoInputAndInput = new ZippedRDD[Float](bpNeuronNetworksSetup.sc, 
 					productNoInput, readyRDDList.get(t2._1).get)
-				derivativeList.put(t2._1, proNoInputAndInput.map(t => t._1 * t._2))
+				val der = proNoInputAndInput.map(t => t._1 * t._2)
+				derivativeList.put(t2._1, der)
 			}
 		)
 		//update weights
 		//derivativeList.foreach(t2 => t2._2.saveAsTextFile(t2._1))
 		inputWeights.foreach(
 			t2 => {
-				val w = t2._2
+				var w = t2._2
+				logInfo("before update:" + w)
 				val weightsUpdates = derivativeList.get(t2._1).get
-				weightsUpdates.map(update => w + update)
+				w = w + weightsUpdates.reduce(_ + _)
+				logInfo("after update:" + w)
 				inputWeights.put(t2._1, w)
-				println(inputWeights.get(t2._1).get)
 			}
 		)
 		val r = predictError.reduce((a, b) => 
@@ -69,8 +71,11 @@ class OutputNeuronUnit(
 		//compute error 
 		//predictError.saveAsTextFile("error")
 		logInfo("Prediction Error:" + r)
+		resetReadyFlags()
 		true
 	}
+
+	def DeriveList = derivativeList
 
 	def transformInputRDD(key:String, readyRDD:RDD[Float]) {
 		readyRDDList.put(key, readyRDD)

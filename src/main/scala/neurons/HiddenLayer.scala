@@ -2,6 +2,7 @@ package bpnn.neurons
 
 import scala.collection.mutable.HashMap
 import scala.math
+import scala.reflect.Manifest
 
 import java.lang.String
 
@@ -25,7 +26,7 @@ class HiddenLayer(
 	def act() {
 		loop {
 			react {
-				case "start" =>
+				case StartPrevLayerMsg =>
 					nextLayer ! PrevLayerReadyMsg(this)
 				case "init" =>
 					init()
@@ -40,10 +41,9 @@ class HiddenLayer(
 					}
 				case InputUnitReadyMessage(readyUnit, readyRDD) =>
 					units.foreach(
-						t2 => 
-						{
+						t2 => {
 							if (t2._2.hasThisInputUnit(readyUnit)) {
-								println(readyUnit + "  is ready for " + t2._2.toString)
+								logInfo(readyUnit + "  is ready for " + t2._2.toString)
 								t2._2.markReadyUnit(readyUnit)
 								//transform readyRDD by multiply it with weights
 								t2._2.transformInputRDD(readyUnit, readyRDD)
@@ -51,6 +51,17 @@ class HiddenLayer(
 									if (t2._2.run() == true) {
 										nextLayer ! InputUnitReadyMessage(t2._2.toString, t2._2.getOutput)
 									}
+								}
+							}
+						}
+					)
+				case DeriveListReadyMsg(outUnit:String, 
+					readyRDDMap:HashMap[String, RDD[Float]]) =>
+					readyRDDMap.foreach(t2 => {
+							if (t2._1.substring(0, 4) != "bias") {
+								units.get(t2._1).get.receiveDerive(outUnit, t2._2)
+								if (prevLayer.LayerSize == units.get(t2._1).get.CntReceiveDerive) {
+									units.get(t2._1).get.updateWeights()
 								}
 							}
 						}

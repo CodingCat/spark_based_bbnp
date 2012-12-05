@@ -42,8 +42,7 @@ abstract class NeuronUnit[InputType, OutputType](
 			cnt == numInputUnit  
 		}
 
-		def resetReadyFlags() { inputReadyFlags.foreach(
-			(t2) => inputReadyFlags(t2._1) = 0) }
+		def resetReadyFlags() {inputReadyFlags.foreach(t2 => inputReadyFlags(t2._1) = 0)}
 
 		def markReadyUnit(readyUnit:String) {
 			inputReadyFlags(readyUnit) = 1

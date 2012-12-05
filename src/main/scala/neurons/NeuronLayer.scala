@@ -19,7 +19,7 @@ abstract class NeuronLayer(
 	protected var nextLayer:NeuronLayer = null
 	protected var numNeurons:Int = 0
 	protected var biasUnit:BiasNeuronUnit = null
-
+	
 	def init
 	def runUnits {}
 
@@ -30,6 +30,8 @@ abstract class NeuronLayer(
 	def setNextLayer(nL:NeuronLayer) {
 		nextLayer = nL
 	}
+
+	def LayerSize = numNeurons;
 
 	override def toString = layerName
 }

@@ -39,6 +39,9 @@ class OutputLayer(
 								t2._2.transformInputRDD(readyUnit, readyRDD)
 								if (t2._2.AllInputReady) {
 									t2._2.run()
+									//send the derivative list to prev layer
+									prevLayer ! DeriveListReadyMsg(t2._2.toString, 
+										t2._2.DeriveList)
 								}
 							}
 						}
@@ -68,6 +71,6 @@ class OutputLayer(
 			units.get(unitName).get.init
 		}
 		prevLayer.start
-		prevLayer ! "start"
+		prevLayer ! StartPrevLayerMsg
 	}
 }
