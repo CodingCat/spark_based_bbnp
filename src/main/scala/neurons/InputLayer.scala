@@ -34,9 +34,14 @@ class InputLayer (
 					LayerCoordinator ! LayerReadyMsg(this)
 				case DeriveListReadyMsg(outUnit:String, 
 					readyRDDMap:HashMap[String, RDD[Float]]) =>
+					logInfo("input layer receive derivelistreadymsg")
 					readyRDDMap.foreach(t2 => 
-						//update the round number of each unit
-						units.get(t2._1).get.updateRoundNumber()
+						{
+							if (t2._1.substring(0, 4) != "bias") {
+								//update the round number of each unit
+								units.get(t2._1).get.updateRoundNumber()
+							}
+						}
 					)
 				case "run" =>
 					runUnits()

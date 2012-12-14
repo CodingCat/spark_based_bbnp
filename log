@@ -1,0 +1,304 @@
+[0m[[0minfo[0m] [0mLoading global plugins from /Users/zhunan/.sbt/plugins[0m
+[0m[[0minfo[0m] [0mSet current project to spark-bpnn (in build file:/Users/zhunan/codes/spark_based_bbnp/)[0m
+[0m[[0minfo[0m] [0mRunning bpnn.bpNeuronNetworks [0m
+OutputLayer starts 1 units
+Hidden Layer starts 2 units
+unit2 is running
+unit2 is sending InputUnitReadyMessage
+unit2  is ready for unit2
+unit1 is running
+unit2  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+unit1 is sending InputUnitReadyMessage
+unit1  is ready for unit2
+unit1  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit2
+unit2  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit1
+unit1  is ready for unit1
+unit1's inputs are ready
+Prediction Error:0.91455626
+biasUnitForOutputLayer  is ready for unit1
+unit2's derive is ready
+unit2 receives gradient 1
+receive roundfinish msg from OutputLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:0
+unit1's derive is ready
+unit1 receives gradient 1
+biasUnitForOutputLayer's derive is ready
+receive roundfinish msg from HiddenLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+current round:1 total itr num:10
+unit2 is running
+unit2 is sending InputUnitReadyMessage
+unit2  is ready for unit2
+unit1 is running
+unit2  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+unit1 is sending InputUnitReadyMessage
+unit1  is ready for unit2
+unit1  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit2
+biasUnitForHiddenLayer  is ready for unit1
+unit2  is ready for unit1
+unit1  is ready for unit1
+unit1's inputs are ready
+Prediction Error:0.8977628
+biasUnitForOutputLayer  is ready for unit1
+unit2's derive is ready
+unit2 receives gradient 1
+receive roundfinish msg from OutputLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+current round:2 total itr num:10
+unit2 is running
+unit2 is sending InputUnitReadyMessage
+unit1 is running
+unit1 is sending InputUnitReadyMessage
+unit1's derive is ready
+unit1 receives gradient 1
+biasUnitForOutputLayer's derive is ready
+receive roundfinish msg from HiddenLayer
+OutputLayer:1
+unit2  is ready for unit2
+InputLayer:0
+HiddenLayer:1
+current round:3 total itr num:10
+unit2 is running
+unit2  is ready for unit1
+unit1  is ready for unit2
+unit1  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit2
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit1
+unit2  is ready for unit1
+unit1  is ready for unit1
+unit1's inputs are ready
+unit2 is sending InputUnitReadyMessage
+unit2  is ready for unit2
+unit2  is ready for unit1
+unit1 is running
+unit1 is sending InputUnitReadyMessage
+unit1  is ready for unit2
+unit1  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit2
+biasUnitForHiddenLayer  is ready for unit1
+Prediction Error:0.86803985
+unit2's derive is ready
+biasUnitForOutputLayer  is ready for unit1
+receive roundfinish msg from OutputLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+current round:4 total itr num:10
+unit2 is running
+unit2 receives gradient 1
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+unit2  is ready for unit1
+unit1  is ready for unit1
+unit1's inputs are ready
+unit2 is sending InputUnitReadyMessage
+unit1 is running
+unit1 is sending InputUnitReadyMessage
+Prediction Error:0.799745
+receive roundfinish msg from OutputLayer
+biasUnitForOutputLayer  is ready for unit1
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+current round:5 total itr num:10
+unit2 is running
+unit1's derive is ready
+unit1 receives gradient 1
+unit2 is sending InputUnitReadyMessage
+unit1 is running
+unit1 is sending InputUnitReadyMessage
+biasUnitForOutputLayer's derive is ready
+unit2  is ready for unit2
+receive roundfinish msg from HiddenLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+current round:6 total itr num:10
+unit2 is running
+unit2  is ready for unit1
+unit1  is ready for unit2
+biasUnitForOutputLayer  is ready for unit1
+unit1  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit2
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit1
+unit2  is ready for unit1
+unit1  is ready for unit1
+unit2's derive is ready
+unit2 receives gradient 1
+unit1's inputs are ready
+unit2 is sending InputUnitReadyMessage
+unit1 is running
+unit1 is sending InputUnitReadyMessage
+unit1's derive is ready
+unit1 receives gradient 1
+Prediction Error:0.52156377
+biasUnitForOutputLayer  is ready for unit1
+receive roundfinish msg from OutputLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+current round:7 total itr num:10
+unit2 is running
+unit2 is sending InputUnitReadyMessage
+unit1 is running
+unit1 is sending InputUnitReadyMessage
+biasUnitForOutputLayer's derive is ready
+unit2  is ready for unit2
+receive roundfinish msg from HiddenLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+current round:8 total itr num:10
+unit2 is running
+unit2  is ready for unit1
+unit1  is ready for unit2
+unit1  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit2
+biasUnitForOutputLayer  is ready for unit1
+unit2 is sending InputUnitReadyMessage
+unit1 is running
+biasUnitForHiddenLayer  is ready for unit1
+unit2  is ready for unit1
+unit1  is ready for unit1
+unit1's inputs are ready
+unit2  is ready for unit2
+unit2  is ready for unit1
+unit1  is ready for unit2
+unit1  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit2
+unit1 is sending InputUnitReadyMessage
+biasUnitForHiddenLayer  is ready for unit1
+unit2's derive is ready
+unit2 receives gradient 1
+unit1's derive is ready
+unit1 receives gradient 1
+Prediction Error:2.4274273E-6
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+receive roundfinish msg from OutputLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+current round:9 total itr num:10
+unit2 is running
+unit2  is ready for unit1
+unit1  is ready for unit1
+unit1's inputs are ready
+unit2 is sending InputUnitReadyMessage
+unit1 is running
+unit1 is sending InputUnitReadyMessage
+Prediction Error:3.7541417E-6
+receive roundfinish msg from OutputLayer
+OutputLayer:1
+InputLayer:0
+biasUnitForOutputLayer  is ready for unit1
+HiddenLayer:1
+biasUnitForOutputLayer's derive is ready
+unit2  is ready for unit2
+receive roundfinish msg from HiddenLayer
+OutputLayer:0
+unit2  is ready for unit1
+unit1  is ready for unit2
+unit1  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit2
+biasUnitForHiddenLayer  is ready for unit1
+unit2  is ready for unit2
+unit2  is ready for unit1
+unit1  is ready for unit2
+biasUnitForOutputLayer  is ready for unit1
+unit1  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+unit2  is ready for unit1
+unit1  is ready for unit1
+unit1's inputs are ready
+biasUnitForHiddenLayer  is ready for unit2
+biasUnitForHiddenLayer  is ready for unit1
+unit2's derive is ready
+unit2 receives gradient 1
+unit1's derive is ready
+unit1 receives gradient 1
+Prediction Error:6.44861E-6
+receive roundfinish msg from OutputLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+unit2  is ready for unit1
+unit1  is ready for unit1
+unit1's inputs are ready
+biasUnitForOutputLayer's derive is ready
+unit2  is ready for unit2
+receive roundfinish msg from HiddenLayer
+OutputLayer:0
+unit2  is ready for unit1
+unit1  is ready for unit2
+unit1  is ready for unit1
+biasUnitForHiddenLayer  is ready for unit2
+biasUnitForHiddenLayer  is ready for unit1
+unit2's derive is ready
+unit2 receives gradient 1
+Prediction Error:1.3069544E-5
+biasUnitForOutputLayer  is ready for unit1
+receive roundfinish msg from OutputLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForOutputLayer  is ready for unit1
+unit2  is ready for unit1
+unit1  is ready for unit1
+unit1's inputs are ready
+unit1's derive is ready
+unit1 receives gradient 1
+Prediction Error:3.5482517E-5
+receive roundfinish msg from OutputLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:0
+biasUnitForOutputLayer  is ready for unit1
+biasUnitForOutputLayer's derive is ready
+receive roundfinish msg from HiddenLayer
+OutputLayer:1
+InputLayer:0
+HiddenLayer:1
+unit2's derive is ready
+unit2 receives gradient 1
+unit1's derive is ready
+unit1 receives gradient 1
+biasUnitForOutputLayer's derive is ready
+unit2's derive is ready
+unit2 receives gradient 1
+receive roundfinish msg from HiddenLayer
+OutputLayer:0
+unit1's derive is ready
+unit1 receives gradient 1
+biasUnitForOutputLayer's derive is ready
+receive roundfinish msg from HiddenLayer
+OutputLayer:0
+unit2's derive is ready
+unit2 receives gradient 1
+unit1's derive is ready
+unit1 receives gradient 1
+biasUnitForOutputLayer's derive is ready
+receive roundfinish msg from HiddenLayer
+OutputLayer:0

@@ -30,14 +30,14 @@ class OutputLayer(
 					}
 				case InputUnitReadyMessage(readyUnit, readyRDD) =>
 					units.foreach(
-						t2 => 
-						{
+						t2 => {
 							if (t2._2.hasThisInputUnit(readyUnit)) {
 								println(readyUnit + "  is ready for " + t2._2.toString)
 								t2._2.markReadyUnit(readyUnit)
 								//transform readyRDD by multiply it with weights
 								t2._2.transformInputRDD(readyUnit, readyRDD)
 								if (t2._2.AllInputReady) {
+									println(t2._1 + "'s inputs are ready")
 									t2._2.run()
 									//send the derivative list to prev layer
 									prevLayer ! DeriveListReadyMsg(t2._2.toString, 

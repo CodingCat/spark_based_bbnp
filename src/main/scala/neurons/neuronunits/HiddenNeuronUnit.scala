@@ -23,7 +23,7 @@ class HiddenNeuronUnit(
 	private var derivativeList:HashMap[String, RDD[Float]] = new HashMap[String, RDD[Float]]
 	private var readyRDDList:HashMap[String, RDD[Float]] = new HashMap[String, RDD[Float]]
 	private var outDerives:HashMap[String, RDD[Float]] = new HashMap[String, RDD[Float]]
-	private var cntReceiveOut:Int = 0	
+	private var cntReceiveGradient:Int = 0	
 
 	override def run():Boolean = {
 		//implement the activation function here
@@ -31,13 +31,17 @@ class HiddenNeuronUnit(
 		//Description of the algorithm here:
 		RDDFloatCalculator.setRDDList(inputRDDList.values.toArray)
 		outputRDD = RDDFloatCalculator.rddSigmoid()
-		resetReadyFlags()
 		true
 	}
 
 	def receiveDerive(unitInNextLayer:String, derive:RDD[Float]) {
 		outDerives.put(unitInNextLayer, derive)
-		cntReceiveOut = cntReceiveOut + 1
+		cntReceiveGradient = cntReceiveGradient + 1
+		println(this.toString + " receives gradient " + cntReceiveGradient)
+	}
+
+	def reset() {
+		cntReceiveGradient = 0
 	}
 
 	def updateWeights() {
@@ -70,10 +74,10 @@ class HiddenNeuronUnit(
 				inputWeights.put(t2._1, w)
 			}
 		)
-		cntReceiveOut = 0	
+		//cntReceiveGradient = 0	
 	}
 
-	def CntReceiveDerive:Int = cntReceiveOut
+	def CntReceiveGradient:Int = cntReceiveGradient
 
 	def DeriveList = derivativeList
 

@@ -70,7 +70,7 @@ class OutputNeuronUnit(
 			0.5f * (Math.pow(a.toDouble, 2.0) + Math.pow(b.toDouble, 2.0)).toFloat)
 		//compute error 
 		//predictError.saveAsTextFile("error")
-		logInfo("Prediction Error:" + r)
+		println("Prediction Error:" + r)
 		resetReadyFlags()
 		true
 	}

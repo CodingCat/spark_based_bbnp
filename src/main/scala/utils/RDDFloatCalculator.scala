@@ -11,7 +11,7 @@ import spark.Split
 
 import bpnn._
 
-object RDDFloatCalculator extends Serializable{
+object RDDFloatCalculator extends Serializable with Logging{
 
   private var zippedRDD:ZippedRDD[Float] = null
   private var RDDList:Array[RDD[Float]] = null
@@ -23,16 +23,21 @@ object RDDFloatCalculator extends Serializable{
   def additiveMerge():RDD[Float] = {
     //merge the input RDDs one by one with zippedRDD
     var mergedRDD:RDD[Float] = null
-    for (i <- 0 to RDDList.length - 2) {
-      if (mergedRDD == null) {
-        zippedRDD = new ZippedRDD[Float](bpNeuronNetworksSetup.sc, 
-          RDDList(i), RDDList(i + 1))
+    if (RDDList.length == 1) {
+      mergedRDD = RDDList(0)
+    }
+    else {
+      for (i <- 0 to RDDList.length - 2) {
+        if (mergedRDD == null) {
+          zippedRDD = new ZippedRDD[Float](bpNeuronNetworksSetup.sc, 
+            RDDList(i), RDDList(i + 1))
+        }
+        else {
+          zippedRDD = new ZippedRDD[Float](bpNeuronNetworksSetup.sc, 
+            mergedRDD, RDDList(i + 1))
+        }
+        mergedRDD = zippedRDD.map(t2 => t2._1 + t2._2)
       }
-      else {
-        zippedRDD = new ZippedRDD[Float](bpNeuronNetworksSetup.sc, 
-          mergedRDD, RDDList(i + 1))
-      }
-      mergedRDD = zippedRDD.map(t2 => t2._1 + t2._2)
     }
     mergedRDD
   }

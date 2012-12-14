@@ -31,9 +31,7 @@ class HiddenLayer(
 					nextLayer ! PrevLayerReadyMsg(this)
 				case "init" =>
 					init()
-					if (biasUnit.run() == true) {
-						nextLayer ! InputUnitReadyMessage(biasUnit.toString, biasUnit.getOutput) 
-					}
+
 					LayerCoordinator ! LayerReadyMsg(this)
 				case RegisterInputUnitMsg(srcUnitName) =>
 					{
@@ -44,24 +42,31 @@ class HiddenLayer(
 					units.foreach(
 						t2 => {
 							if (t2._2.hasThisInputUnit(readyUnit)) {
-								logInfo(readyUnit + "  is ready for " + t2._2.toString)
+								println(readyUnit + "  is ready for " + t2._2.toString)
 								t2._2.markReadyUnit(readyUnit)
 								//transform readyRDD by multiply it with weights
 								t2._2.transformInputRDD(readyUnit, readyRDD)
 								if (t2._2.AllInputReady()) {
 									if (t2._2.run() == true) {
 										nextLayer ! InputUnitReadyMessage(t2._2.toString, t2._2.getOutput)
+										t2._2.resetReadyFlags()
 									}
 								}
 							}
 						}
 					)
+					if (biasUnit.run() == true) {
+						nextLayer ! InputUnitReadyMessage(biasUnit.toString, 
+							biasUnit.getOutput) 
+					}
 				case DeriveListReadyMsg(outUnit:String, 
 					readyRDDMap:HashMap[String, RDD[Float]]) =>
+					//logInfo("receive DeriveListReadyMsg ")
 					readyRDDMap.foreach(t2 => {
+							println(t2._1 + "\'s derive is ready");
 							if (t2._1.substring(0, 4) != "bias") {
 								units.get(t2._1).get.receiveDerive(outUnit, t2._2)
-								if (nextLayer.LayerSize == units.get(t2._1).get.CntReceiveDerive) {
+								if (nextLayer.LayerSize == units.get(t2._1).get.CntReceiveGradient) {
 									units.get(t2._1).get.updateWeights()
 									cntUpdatedWeightsUnits = cntUpdatedWeightsUnits + 1
 									prevLayer ! DeriveListReadyMsg(t2._2.toString, 
@@ -71,6 +76,8 @@ class HiddenLayer(
 						}
 					)
 					if (RoundCompleted) {
+						//reset counters
+						units.foreach(t2 => t2._2.reset)
 						LayerCoordinator ! RoundFinishMsg(this.toString)
 					}
 				case PrevLayerReadyMsg(readyLayer) =>
@@ -81,7 +88,10 @@ class HiddenLayer(
 
 	private def RoundCompleted():Boolean = {
 		units.foreach(t2 => {
-				if (t2._2.CntReceiveDerive != nextLayer.LayerSize) return false
+				if (t2._2.CntReceiveGradient != nextLayer.LayerSize) {
+					println(t2._1 + ":" + t2._2.CntReceiveGradient + ":" + nextLayer.LayerSize)
+					return false
+				}
 			}
 		)
 		true

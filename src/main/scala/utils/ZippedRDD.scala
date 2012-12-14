@@ -34,17 +34,22 @@ class ZippedRDD[InputRDDType](
 
   @transient
   val splits_ : Array[Split] = {
+    if (rdd1 == null) {
+      throw new Exception("rdd1 is null")
+    }
+    if (rdd2 == null) {
+      throw new Exception("rdd2 is null")
+    }
     if (rdd1 != null && rdd2 != null && rdd1.splits.size != rdd2.splits.size) {
       throw new IllegalArgumentException(
-        "Can't zip RDDs with unequal numbers of partitions, where rdd1 = " + rdd1.splits.size + 
-        " rdd2 = " + rdd2.splits.size)
+        "Can't zip RDDs with unequal numbers of partitions, where rdd1 = " + 
+        rdd1.splits.size + " rdd2 = " + rdd2.splits.size)
     }
     val array = new Array[Split](rdd1.splits.size)
   
     for (i <- 0 until rdd1.splits.size) {
       array(i) = new ZippedSplit(i, rdd1, rdd2, rdd1.splits(i), rdd2.splits(i))
     }
-  
     array
   }
 

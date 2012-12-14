@@ -28,4 +28,5 @@ object bpNeuronNetworksSetup {
 	}
 
 	def numInstance:Int = conf.getInt("global.TrainingSet.Num", 200);
+	def numIterations:Int = conf.getInt("global.IterationNum", 5);
 }

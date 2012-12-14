@@ -1,0 +1,14 @@
+[0m[[0minfo[0m] [0mLoading global plugins from /Users/zhunan/.sbt/plugins[0m
+[0m[[0minfo[0m] [0mSet current project to spark-bpnn (in build file:/Users/zhunan/codes/spark_based_bbnp/)[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /Users/zhunan/codes/spark_based_bbnp/target/scala-2.9.2/classes...[0m
+[0m[[0minfo[0m] [0mRunning bpnn.bpNeuronNetworks [0m
+OutputLayer starts 1 units
+Hidden Layer starts 2 units
+biasUnitForOutputLayer  is ready for unit1
+unit2 is running
+unit2 is sending InputUnitReadyMessage
+unit1 is running
+unit1 is sending InputUnitReadyMessage
+unit2  is ready for unit1
+unit1  is ready for unit1
+Prediction Error:0.96546566

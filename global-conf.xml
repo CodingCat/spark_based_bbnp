@@ -23,4 +23,8 @@
 		<name>global.LearningStepLen</name>
 		<value>0.001</value>
 	</property>
+	<property>
+		<name>global.IterationNum</name>
+		<value>10</value>
+	</property>
 </configuration>
